@@ -52,19 +52,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         _sedeDAO.Insertar(1,"Viña","quillota 980","","","disponible",0);
         _sedeDAO.Insertar(2,"Santiago","ejercito 100","","","disponible",1);*/
 
-        List<UniversidadMOD> list = _uniDAO.getUniversidadList();
-        items = new String[list.size()];
-        for ( int i= 0; i < list.size(); i++){
 
-            items[i] = list.get(i).getNombreUniversidad();
-        }
-
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
-                items);
-
-        spinnerregistro.setAdapter(adapter);
-        spinnerregistro.setOnItemSelectedListener(this);
-
+        loadSpinner();
 
         prefs=      getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
 
@@ -75,6 +64,23 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         Toast.makeText(this,"entre",Toast.LENGTH_SHORT).show();
 
     }
+
+    private void loadSpinner() {
+
+        List<UniversidadMOD> list = _uniDAO.getUniversidadList();
+        items = new String[list.size()];
+        for ( int i= 0; i < list.size(); i++){
+
+            items[i] = list.get(i).getNombreUniversidad();
+        }
+
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
+                items);
+        spinnerregistro.setAdapter(adapter);
+        spinnerregistro.setOnItemSelectedListener(this);
+
+    }
+
 
     public void cargarspinner2(String nombre){
 
@@ -105,6 +111,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
                 editor = prefs.edit();
                 editor.putString("Universidad", nombre);
                 editor.commit();
+
+                cargarspinner2(nombre);
                 break;
             case R.id.spinnerregistro1:
                 editor = prefs.edit();
@@ -113,7 +121,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
         }
 
-        cargarspinner2(nombre);
+
     }
 
     @Override

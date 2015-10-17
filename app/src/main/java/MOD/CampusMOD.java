@@ -1,5 +1,7 @@
 package MOD;
 
+import android.content.ContentValues;
+
 /**
  * Created by Patrick on 12-10-2015.
  */
@@ -30,6 +32,21 @@ public class CampusMOD {
             + TABLE_CAMPUS_LONGITUD + " TEXT, "
             + TABLE_CAMPUS_ESTADO + " TEXT, "
             + TABLE_CAMPUS_IDSEDE + " INTEGER)";
+
+
+    public static ContentValues DatosCampus(int id,String nombre, String direccion, String latitud, String longitud, String estado, int idsede) {
+        ContentValues valores = new ContentValues();
+
+        valores.put(TABLE_CAMPUS_ID, id);
+        valores.put(TABLE_CAMPUS_NOMBRE, nombre);
+        valores.put(TABLE_CAMPUS_DIRECCION, direccion);
+        valores.put(TABLE_CAMPUS_LATITUD, latitud);
+        valores.put(TABLE_CAMPUS_LONGITUD, longitud);
+        valores.put(TABLE_CAMPUS_ESTADO, estado);
+        valores.put(TABLE_CAMPUS_IDSEDE, idsede);
+
+        return valores;
+    }
 
 
     public int getIdCampus() {
