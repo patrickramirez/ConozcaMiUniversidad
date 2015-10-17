@@ -1,5 +1,7 @@
 package MOD;
 
+import android.content.ContentValues;
+
 /**
  * Created by jogan1075 on 17-10-15.
  */
@@ -14,6 +16,45 @@ public class FacultadMOD {
     private int idcampus;
     private int idedificio;
 
+
+    public static final String NOMBRE_TABLE_FACULTAD = "facultad";
+    public static final String TABLE_FACULTAD_ID = "idFacultad";
+    public static final String TABLE_FACULTAD_NOMBRE = "nombreFacultad";
+    public static final String TABLE_FACULTAD_DIRECCION = "direccion";
+    public static final String TABLE_FACULTAD_LATITUD = "latitud";
+    public static final String TABLE_FACULTAD_LONGITUD = "longitud";
+    public static final String TABLE_FACULTAD_ESTADO = "estado";
+    public static final String TABLE_FACULTAD_IDCAMPUS = "idcampus";
+    public static final String TABLE_FACULTAD_IDEDIFICIO = "idedificio";
+
+
+    public static final String SCRIPT_CREACION_TABLA_FACULTAD = "CREATE TABLE " + NOMBRE_TABLE_FACULTAD + "("
+            + TABLE_FACULTAD_ID + " INTEGER PRIMARY KEY, "
+            + TABLE_FACULTAD_NOMBRE + " TEXT, "
+            + TABLE_FACULTAD_DIRECCION + " TEXT, "
+            + TABLE_FACULTAD_LATITUD + " TEXT, "
+            + TABLE_FACULTAD_LONGITUD + " TEXT, "
+            + TABLE_FACULTAD_ESTADO + " TEXT, "
+            + TABLE_FACULTAD_IDCAMPUS + " INTEGER, "
+            + TABLE_FACULTAD_IDEDIFICIO + " INTEGER)";
+
+
+    public static ContentValues DatosEdificio(int id, String nombre, String direccion, String latitud,
+                                              String longitud, String estado, int idcampus, int idedificio) {
+        ContentValues valores = new ContentValues();
+
+        valores.put(TABLE_FACULTAD_ID, id);
+        valores.put(TABLE_FACULTAD_NOMBRE, nombre);
+        valores.put(TABLE_FACULTAD_DIRECCION, direccion);
+        valores.put(TABLE_FACULTAD_LATITUD, latitud);
+        valores.put(TABLE_FACULTAD_LONGITUD, longitud);
+        valores.put(TABLE_FACULTAD_ESTADO, estado);
+        valores.put(TABLE_FACULTAD_IDCAMPUS, idcampus);
+        valores.put(TABLE_FACULTAD_IDEDIFICIO, idedificio);
+
+
+        return valores;
+    }
 
     public int getId() {
         return id;

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:2:1-41:12
+ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:2:1-51:12
 	package
 		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:3:5-42
 		INJECTED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml
@@ -58,7 +58,7 @@ MERGED from [com.google.android.gms:play-services-maps:8.1.0] /Users/jogan1075/D
 	android:name
 		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:9:22-78
 application
-ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:11:5-39:19
+ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:11:5-49:19
 MERGED from [com.android.support:appcompat-v7:23.0.1] /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.0.1] /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services:8.1.0] /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/8.1.0/AndroidManifest.xml:19:5-20
@@ -172,11 +172,11 @@ MERGED from [com.android.support:support-v4:23.0.1] /Users/jogan1075/Documents/P
 	android:allowBackup
 		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:12:9-35
 	android:icon
-		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:13:9-43
+		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:13:9-41
 	android:theme
 		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:15:9-40
 activity#patrick.conozcamiuniversida.MainActivity
-ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:16:9-21:20
+ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:16:9-19:86
 	android:label
 		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:18:13-45
 	android:theme
@@ -184,33 +184,49 @@ ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/
 	android:name
 		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:17:13-41
 activity#patrick.conozcamiuniversida.MenuPrincipal
-ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:22:9-25:20
+ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:20:9-22:86
 	android:theme
-		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:24:13-83
+		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:22:13-83
 	android:name
-		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:23:13-42
-meta-data#com.google.android.maps.v2.API_KEY
-ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:27:9-29:32
-	android:value
-		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:29:13-29
-	android:name
-		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:28:13-62
+		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:21:13-42
 activity#patrick.conozcamiuniversida.SplashScreen
-ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:31:9-38:20
+ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:28:9-36:20
 	android:theme
-		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:32:13-83
+		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:30:13-83
 	android:name
-		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:31:19-47
+		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:29:13-41
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:33:13-37:29
+ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:31:13-35:29
 action#android.intent.action.MAIN
-ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:34:17-69
+ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:32:17-69
 	android:name
-		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:34:25-66
+		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:32:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:36:17-77
+ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:34:17-77
 	android:name
-		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:36:27-74
+		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:34:27-74
+activity#patrick.conozcamiuniversida.EdificioSearch
+ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:37:9-39:86
+	android:theme
+		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:39:13-83
+	android:name
+		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:38:13-43
+activity#patrick.conozcamiuniversida.ResultadoEdificioSearch
+ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:40:9-42:86
+	android:theme
+		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:42:13-83
+	android:name
+		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:41:13-52
+uses-library#com.google.android.maps
+ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:43:9-64
+	android:name
+		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:43:23-61
+meta-data#com.google.android.geo.API_KEY
+ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:44:9-46:71
+	android:value
+		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:46:13-68
+	android:name
+		ADDED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:45:13-58
 uses-sdk
 INJECTED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.0.1] /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/AndroidManifest.xml:20:5-43
@@ -421,7 +437,7 @@ MERGED from [com.google.android.gms:play-services-maps:8.1.0] /Users/jogan1075/D
 	android:required
 		ADDED from [com.google.android.gms:play-services-maps:8.1.0] /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.1.0/AndroidManifest.xml:25:8-31
 android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:2:1-41:12 reason: com.google.android.gms.maps requested WRITE_EXTERNAL_STORAGE
+IMPLIED from /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/src/main/AndroidManifest.xml:2:1-51:12 reason: com.google.android.gms.maps requested WRITE_EXTERNAL_STORAGE
 uses-permission#com.google.android.c2dm.permission.RECEIVE
 ADDED from [com.google.android.gms:play-services-gcm:8.1.0] /Users/jogan1075/Documents/PROYECTOS ANDROID/ConozcaMiUniversida/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.1.0/AndroidManifest.xml:21:5-82
 	android:name

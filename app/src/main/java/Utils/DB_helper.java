@@ -20,9 +20,9 @@ public class DB_helper extends SQLiteOpenHelper {
 
     private DB_helper(Context context) {
         /*Guardar archivo de base de datos en otra ruta*/
-      //super(context, Environment.getExternalStorageDirectory() + File.separator + "conozcomiuniversidad" + File.separator + DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, Environment.getExternalStorageDirectory() + File.separator + "conozcomiuniversidad" + File.separator + DATABASE_NAME, null, DATABASE_VERSION);
        /*Guardar archivo de base de datos en ruta por defecto*/
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        // super(context, DATABASE_NAME, null, DATABASE_VERSION);
         _scriptDB = new ScriptDB();
     }
 

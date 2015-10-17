@@ -1,5 +1,7 @@
 package MOD;
 
+import android.content.ContentValues;
+
 /**
  * Created by Patrick on 12-10-2015.
  */
@@ -31,6 +33,21 @@ public class EdificioMOD {
             + TABLE_EDIFICIO_LONGITUD + " TEXT, "
             + TABLE_EDIFICIO_ESTADO + " TEXT, "
             + TABLE_EDIFICIO_IDCAMPUS + " INTEGER)";
+
+    public static ContentValues DatosEdificio(int id, String nombre, String direccion, String latitud,
+                                              String longitud, String estado, int idcampus) {
+        ContentValues valores = new ContentValues();
+
+        valores.put(TABLE_EDIFICIO_ID, id);
+        valores.put(TABLE_EDIFICIO_NOMBRE, nombre);
+        valores.put(TABLE_EDIFICIO_DIRECCION, direccion);
+        valores.put(TABLE_EDIFICIO_LATITUD, latitud);
+        valores.put(TABLE_EDIFICIO_LONGITUD, longitud);
+        valores.put(TABLE_EDIFICIO_ESTADO, estado);
+        valores.put(TABLE_EDIFICIO_IDCAMPUS, idcampus);
+
+        return valores;
+    }
 
     public int getIdEdificio() {
         return idEdificio;

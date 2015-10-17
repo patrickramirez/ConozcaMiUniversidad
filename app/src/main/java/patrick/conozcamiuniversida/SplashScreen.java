@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.ProgressBar;
 
 import DAO.CampusDAO;
+import DAO.EdificioDAO;
 import DAO.SedeDAO;
 import DAO.UniversidadDAO;
 import Utils.LoadingTask;
@@ -20,6 +21,7 @@ public class SplashScreen extends Activity implements LoadingTask.LoadingTaskFin
     UniversidadDAO _uniDAO;
     SedeDAO _sedeDAO;
     CampusDAO _campusDAO;
+    EdificioDAO _edificioDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +36,11 @@ public class SplashScreen extends Activity implements LoadingTask.LoadingTaskFin
         _uniDAO = UniversidadDAO.getInstance(this);
         _sedeDAO = SedeDAO.getInstance(this);
         _campusDAO = CampusDAO.getInstance(this);
+        _edificioDAO = EdificioDAO.getInstance(this);
 
-        /*
 
+
+/*
         _uniDAO.Insertar(0, "Universidad Andres Bello", "republica 237", "", "", "disponible");
         _uniDAO.Insertar(1, "Universidad Diego Portales", "ejercito 100", "", "", "disponible");
         _sedeDAO.Insertar(0, "Santiago", "republica 237", "", "", "disponible", 0);
@@ -47,7 +51,13 @@ public class SplashScreen extends Activity implements LoadingTask.LoadingTaskFin
         _campusDAO.Insertar(1, "Campus republica", "republica 100", "", "", "disponible", 0);
 
 
-        */
+        _edificioDAO.Insertar(0,"A1","antonio varas 807","-33.4346167","-70.6151994","disponible",0);
+        _edificioDAO.Insertar(1,"A2","antonio varas 880","-33.4353601","-70.61473699999999","disponible",0);
+*/
+
+
+
+
 
 
         new LoadingTask(barra, SplashScreen.this).execute();
