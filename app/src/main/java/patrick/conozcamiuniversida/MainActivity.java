@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,18 +53,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         _uniDAO = UniversidadDAO.getInstance(this);
         _sedeDAO = SedeDAO.getInstance(this);
         _campusDAO = CampusDAO.getInstance(this);
-
-
-    /*   _uniDAO.Insertar(0, "Universidad Andres Bello", "republica 237", "", "", "disponible");
-        _uniDAO.Insertar(1, "Universidad Diego Portales", "ejercito 100", "", "", "disponible");
-        _sedeDAO.Insertar(0, "Santiago", "republica 237", "", "", "disponible", 0);
-        _sedeDAO.Insertar(1, "Viña", "quillota 980", "", "", "disponible", 0);
-        _sedeDAO.Insertar(2, "Santiago", "ejercito 100", "", "", "disponible", 1);
-        _campusDAO.Insertar(0, "Campus Antonio Varas", "antonio varas 100", "", "", "disponible", 0);
-        _campusDAO.Insertar(1, "Campus republica", "republica 100", "", "", "disponible", 0);
-
-        */
-
 
         loadSpinnerUniversidad();
 
@@ -172,5 +161,25 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    public void onBackPressed() {
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            // Esto es lo que hace mi botï¿½n al pulsar ir a atrï¿½s
+
+            finish();
+
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_HOME && event.getRepeatCount() == 0) {
+
+
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
