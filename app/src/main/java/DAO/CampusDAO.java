@@ -38,17 +38,24 @@ public class CampusDAO {
                 CampusMOD.DatosCampus(id, nombre, direccion, latitud, longitud, estado, idSede));
     }
 
-    public List<CampusMOD> getListCampusbynombreSede(String nombresede) {
+    public List<CampusMOD> getListCampusbynombreSede(String nombresede, String NombreUniversidad) {
         List<CampusMOD> lista = new ArrayList<CampusMOD>();
         CampusMOD _campusMOD;
-        int idusede=0;
+        String idusede = "";
+        String iduniversidad = "";
 
-        String sql1 = "select id from sede where nombre='"+ nombresede +"'";
+        String sql2 = "select id from universidad where nombre='" + NombreUniversidad + "'";
+        Cursor ccc = database.rawQuery(sql2, null);
+        if (ccc.moveToFirst()) {
+            iduniversidad = ccc.getString(0);
+        }
+
+        String sql1 = "select idSede from sede where nombreSede='" + nombresede + "' and iduniversidad='" + iduniversidad + "'";
         Cursor cc = database.rawQuery(sql1,null);
         if(cc.moveToFirst()){
-            idusede = cc.getInt(0);
+            idusede = cc.getString(0);
         }
-        String sql = "select * from campus where idsede="+ idusede;
+        String sql = "select * from campus where idsede='"+ idusede + "'";
         Cursor c = database.rawQuery(sql, null);
 
         if (c != null && c.moveToFirst()) {

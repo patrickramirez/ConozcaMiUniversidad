@@ -19,8 +19,10 @@ import android.widget.Toast;
 import java.util.LinkedList;
 import java.util.List;
 
+import DAO.CampusDAO;
 import DAO.SedeDAO;
 import DAO.UniversidadDAO;
+import MOD.CampusMOD;
 import MOD.SedeMOD;
 import MOD.UniversidadMOD;
 
@@ -29,65 +31,74 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
     UniversidadDAO _uniDAO;
     SedeDAO _sedeDAO;
-    Spinner spinnerregistro,spinnerregistro1;
+    CampusDAO _campusDAO;
+    Spinner spinneruniversidad, spinnersede, spinnercampus;
 
     String[] items;
     ArrayAdapter<String> adapter;
     SharedPreferences prefs;
+
+    String nombreUniverisdad, nombreSede, nombreCampus;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        spinnerregistro =(Spinner)findViewById(R.id.spinnerregistro);
+        spinneruniversidad = (Spinner) findViewById(R.id.spinnerUniversidad);
+        spinnersede = (Spinner) findViewById(R.id.spinnerSede);
+        spinnercampus = (Spinner) findViewById(R.id.spinnerCampus);
 
-        spinnerregistro1=(Spinner)findViewById(R.id.spinnerregistro1);
         _uniDAO = UniversidadDAO.getInstance(this);
         _sedeDAO = SedeDAO.getInstance(this);
-
-        /*habilitar para insertar datos borrando todo de 0
-        _uniDAO.Insertar(0,"Universidad Andres Bello","republica 237","","","disponible");
-        _uniDAO.Insertar(1,"Universidad Diego Portales","ejercito 100","","","disponible");
-        _sedeDAO.Insertar(0,"Santiago","republica 237","","","disponible",0);
-        _sedeDAO.Insertar(1,"Viña","quillota 980","","","disponible",0);
-        _sedeDAO.Insertar(2,"Santiago","ejercito 100","","","disponible",1);*/
+        _campusDAO = CampusDAO.getInstance(this);
 
 
-        loadSpinner();
+//        _uniDAO.Insertar(0, "Universidad Andres Bello", "republica 237", "", "", "disponible");
+//        _uniDAO.Insertar(1, "Universidad Diego Portales", "ejercito 100", "", "", "disponible");
+//        _sedeDAO.Insertar(0, "Santiago", "republica 237", "", "", "disponible", 0);
+//        _sedeDAO.Insertar(1, "Viña", "quillota 980", "", "", "disponible", 0);
+//        _sedeDAO.Insertar(2, "Santiago", "ejercito 100", "", "", "disponible", 1);
+//        _campusDAO.Insertar(0, "Campus Antonio Varas", "antonio varas 100", "", "", "disponible", 0);
+//        _campusDAO.Insertar(1, "Campus republica", "republica 100", "", "", "disponible", 0);
 
-        prefs=      getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+
+        loadSpinnerUniversidad();
+
+        prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
 
     }
-    public void BtnEntrar(View v){
+
+    public void BtnEntrar(View v) {
 //        startActivity(new Intent(this, Menu_principal.class));
 //        finish();
-        Toast.makeText(this,"entre",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "entre", Toast.LENGTH_SHORT).show();
 
     }
 
-    private void loadSpinner() {
+    private void loadSpinnerUniversidad() {
 
         List<UniversidadMOD> list = _uniDAO.getUniversidadList();
         items = new String[list.size()];
-        for ( int i= 0; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
 
             items[i] = list.get(i).getNombreUniversidad();
         }
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
                 items);
-        spinnerregistro.setAdapter(adapter);
-        spinnerregistro.setOnItemSelectedListener(this);
+        spinneruniversidad.setAdapter(adapter);
+        spinneruniversidad.setOnItemSelectedListener(this);
 
     }
 
 
-    public void cargarspinner2(String nombre){
+    public void cargarspinnerSede(String nombre) {
 
         List<SedeMOD> list = _sedeDAO.getListsedes(nombre);
         items = new String[list.size()];
 
-        for ( int i= 0; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
 
             items[i] = list.get(i).getNombreSede();
         }
@@ -95,29 +106,57 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
                 items);
 
-        spinnerregistro1.setAdapter(adapter);
-        spinnerregistro1.setOnItemSelectedListener(this);
+        spinnersede.setAdapter(adapter);
+        spinnersede.setOnItemSelectedListener(this);
+    }
+
+    public void cargarspinnerCampus(String nombre, String iduniversidad) {
+
+        List<CampusMOD> list = _campusDAO.getListCampusbynombreSede(nombre, iduniversidad);
+        items = new String[list.size()];
+
+        for (int i = 0; i < list.size(); i++) {
+
+            items[i] = list.get(i).getNombreCampus();
+        }
+
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
+                items);
+
+        spinnercampus.setAdapter(adapter);
+        spinnercampus.setOnItemSelectedListener(this);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String nombre = parent.getItemAtPosition(position).toString();
+
 
         SharedPreferences.Editor editor;
 
         switch (parent.getId()) {
 
-            case R.id.spinnerregistro:
+            case R.id.spinnerUniversidad:
+                nombreUniverisdad = parent.getItemAtPosition(position).toString();
                 editor = prefs.edit();
-                editor.putString("Universidad", nombre);
+                editor.putString("Universidad", nombreUniverisdad);
                 editor.commit();
 
-                cargarspinner2(nombre);
+                cargarspinnerSede(nombreUniverisdad);
                 break;
-            case R.id.spinnerregistro1:
+            case R.id.spinnerSede:
+                nombreSede = parent.getItemAtPosition(position).toString();
                 editor = prefs.edit();
-                editor.putString("sede", nombre);
+                editor.putString("sede", nombreSede);
                 editor.commit();
+                cargarspinnerCampus(nombreSede, nombreUniverisdad);
+                break;
+
+            case R.id.spinnerCampus:
+                nombreCampus = parent.getItemAtPosition(position).toString();
+                editor = prefs.edit();
+                editor.putString("campus", nombreCampus);
+                editor.commit();
+                break;
 
         }
 
