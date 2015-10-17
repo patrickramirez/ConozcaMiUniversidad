@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Conozco Mi Universidad</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_menu_principal">Conozco Mi Universidad</string>
+    <string name="title_activity_facultad_menu">facultad_menu</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_facultad_opcion">Facultad_opcion</string>
+</resources>
