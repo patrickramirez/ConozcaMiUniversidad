@@ -54,13 +54,15 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         _campusDAO = CampusDAO.getInstance(this);
 
 
-//        _uniDAO.Insertar(0, "Universidad Andres Bello", "republica 237", "", "", "disponible");
-//        _uniDAO.Insertar(1, "Universidad Diego Portales", "ejercito 100", "", "", "disponible");
-//        _sedeDAO.Insertar(0, "Santiago", "republica 237", "", "", "disponible", 0);
-//        _sedeDAO.Insertar(1, "Viña", "quillota 980", "", "", "disponible", 0);
-//        _sedeDAO.Insertar(2, "Santiago", "ejercito 100", "", "", "disponible", 1);
-//        _campusDAO.Insertar(0, "Campus Antonio Varas", "antonio varas 100", "", "", "disponible", 0);
-//        _campusDAO.Insertar(1, "Campus republica", "republica 100", "", "", "disponible", 0);
+    /*   _uniDAO.Insertar(0, "Universidad Andres Bello", "republica 237", "", "", "disponible");
+        _uniDAO.Insertar(1, "Universidad Diego Portales", "ejercito 100", "", "", "disponible");
+        _sedeDAO.Insertar(0, "Santiago", "republica 237", "", "", "disponible", 0);
+        _sedeDAO.Insertar(1, "Viña", "quillota 980", "", "", "disponible", 0);
+        _sedeDAO.Insertar(2, "Santiago", "ejercito 100", "", "", "disponible", 1);
+        _campusDAO.Insertar(0, "Campus Antonio Varas", "antonio varas 100", "", "", "disponible", 0);
+        _campusDAO.Insertar(1, "Campus republica", "republica 100", "", "", "disponible", 0);
+
+        */
 
 
         loadSpinnerUniversidad();
@@ -70,9 +72,13 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     }
 
     public void BtnEntrar(View v) {
-//        startActivity(new Intent(this, Menu_principal.class));
-//        finish();
-        Toast.makeText(this, "entre", Toast.LENGTH_SHORT).show();
+
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("Bienvenida", "SI");
+        editor.commit();
+        startActivity(new Intent(this, MenuPrincipal.class));
+        finish();
+
 
     }
 
