@@ -67,7 +67,7 @@ public class EdificioSearch extends Activity implements AdapterView.OnItemSelect
 
         switch (parent.getId()) {
 
-            case R.id.spinnerUniversidad:
+            case R.id.spinnerEdificio:
                 String nombreEdificio = parent.getItemAtPosition(position).toString();
                 editor = prefs.edit();
                 editor.putString("NombreEdificioSeleccionado", nombreEdificio);
