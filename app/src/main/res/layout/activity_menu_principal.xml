@@ -52,7 +52,8 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/imageButton3"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/arealogo" />
+                android:background="@drawable/arealogo"
+                android:onClick="BtnAreaServicios" />
         </LinearLayout>
 
         <LinearLayout

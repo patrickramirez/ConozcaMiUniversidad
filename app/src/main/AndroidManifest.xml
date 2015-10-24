@@ -44,8 +44,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAfTOn6bxIxwouUcK2BFJc5OMUTYgYOOfU" />
 
-        <activity android:name=".FacultadSearch"></activity>
-        <activity android:name=".ResultadoFacultadSearch"></activity>
+        <activity android:name=".FacultadSearch" />
+        <activity android:name=".ResultadoFacultadSearch" />
+        <activity android:name=".AreaServicio"></activity>
     </application>
 
 </manifest>

@@ -114,11 +114,21 @@ public class ResultadoEdificioSearch extends FragmentActivity {
 
     public void btnSendGoogleMaps(View v) {
 
+//
+//        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + latitud + "," + longitud);
+//        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+//        mapIntent.setPackage("com.google.android.apps.maps");
+//        startActivity(mapIntent);
 
-        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + latitud + "," + longitud);
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        mapIntent.setPackage("com.google.android.apps.maps");
-        startActivity(mapIntent);
+
+        String label = "Resultado Edificios";
+        String uriBegin = "geo:" + latitud + "," + longitud;
+        String query = latitud + "," + longitud + "(" + label + ")";
+        String encodedQuery = Uri.encode(query);
+        String uriString = uriBegin + "?q=" + encodedQuery + "&z=16";
+        Uri uri = Uri.parse(uriString);
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+        startActivity(intent);
 
     }
 }
