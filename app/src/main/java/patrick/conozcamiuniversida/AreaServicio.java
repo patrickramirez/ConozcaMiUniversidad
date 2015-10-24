@@ -41,7 +41,12 @@ public class AreaServicio extends Activity implements AdapterView.OnItemSelected
     }
 
     public void BtnBanio(View v) {
-
+        SharedPreferences.Editor editor;
+        editor = prefs.edit();
+        editor.putString("TipoSeleccionado", "Baño");
+        editor.commit();
+        startActivity(new Intent(this, ResultadoAreasServicios.class));
+        finish();
     }
 
     private void loadSpinnerEdificio() {
@@ -54,8 +59,8 @@ public class AreaServicio extends Activity implements AdapterView.OnItemSelected
             items[i] = list.get(i).getNombreEdificio();
         }
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
-                items);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+
         spinnerEdificiosAreas.setAdapter(adapter);
         spinnerEdificiosAreas.setOnItemSelectedListener(this);
 
@@ -69,9 +74,9 @@ public class AreaServicio extends Activity implements AdapterView.OnItemSelected
 
             case R.id.spinnerEdificiosAreas:
                 String nombreEdificio = parent.getItemAtPosition(position).toString();
-                //  editor = prefs.edit();
-                //  editor.putString("NombreEdificioSeleccionado", nombreEdificio);
-                //  editor.commit();
+                editor = prefs.edit();
+                editor.putString("NombreEdificioSeleccionadoEnArea", nombreEdificio);
+                editor.commit();
 
 
                 break;

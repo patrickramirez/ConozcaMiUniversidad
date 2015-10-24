@@ -62,7 +62,10 @@
 
         <activity android:name="patrick.conozcamiuniversida.FacultadSearch" />
         <activity android:name="patrick.conozcamiuniversida.ResultadoFacultadSearch" />
-        <activity android:name="patrick.conozcamiuniversida.AreaServicio" >
+        <activity android:name="patrick.conozcamiuniversida.AreaServicio" />
+        <activity android:name="patrick.conozcamiuniversida.ResultadoAreasServicios" >
+        </activity>
+        <activity android:name="patrick.conozcamiuniversida.ResultadoMapaArea" >
         </activity>
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
