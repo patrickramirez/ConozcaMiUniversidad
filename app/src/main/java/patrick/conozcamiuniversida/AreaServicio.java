@@ -40,6 +40,10 @@ public class AreaServicio extends Activity implements AdapterView.OnItemSelected
         loadSpinnerEdificio();
     }
 
+    public void BtnBaño(View v) {
+
+    }
+
     private void loadSpinnerEdificio() {
         String NombreCampus = prefs.getString("campus", "");
 
