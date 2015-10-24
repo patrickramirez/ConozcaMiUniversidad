@@ -40,7 +40,7 @@ public class AreaServicio extends Activity implements AdapterView.OnItemSelected
         loadSpinnerEdificio();
     }
 
-    public void BtnBaño(View v) {
+    public void BtnBanio(View v) {
 
     }
 
