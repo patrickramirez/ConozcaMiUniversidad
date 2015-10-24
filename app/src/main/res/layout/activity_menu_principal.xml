@@ -93,7 +93,8 @@
                 android:background="@drawable/facultadlogo"
                 android:layout_centerVertical="true"
                 android:layout_alignLeft="@+id/imageButton5"
-                android:layout_alignStart="@+id/imageButton5" />
+                android:layout_alignStart="@+id/imageButton5"
+                android:onClick="BtnFacultad" />
         </LinearLayout>
 
         <LinearLayout

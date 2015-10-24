@@ -1,6 +1,5 @@
 package patrick.conozcamiuniversida;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,7 +9,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -27,11 +28,16 @@ public class ResultadoEdificioSearch extends FragmentActivity {
     EdificioDAO _edificioDAO;
     SharedPreferences prefs;
     String longitud, latitud;
+    TextView txtDescripcionMapa, txtestadoEdificio, txtdireccionEdificio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultado_edificio_search);
+
+        txtDescripcionMapa = (TextView) findViewById(R.id.txtDescripcionMapa);
+        txtestadoEdificio = (TextView) findViewById(R.id.txtestadoFacultad);
+        txtdireccionEdificio = (TextView) findViewById(R.id.txtdireccionEdificio);
 
         _edificioDAO = EdificioDAO.getInstance(this);
         prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
@@ -56,8 +62,9 @@ public class ResultadoEdificioSearch extends FragmentActivity {
                     String direccion = cursor.getString(cursor.getColumnIndex("direccion"));
                     longitud = cursor.getString(cursor.getColumnIndex("longitud"));
                     latitud = cursor.getString(cursor.getColumnIndex("latitud"));
-
-
+                    txtDescripcionMapa.setText("Edificio " + cursor.getString(cursor.getColumnIndex("nombreEdificio")));
+                    txtestadoEdificio.setText(cursor.getString(cursor.getColumnIndex("estado")));
+                    txtdireccionEdificio.setText(direccion);
 
                     options.title("Resultado: ");
                     options.snippet(direccion);
@@ -84,6 +91,26 @@ public class ResultadoEdificioSearch extends FragmentActivity {
 
     }
 
+    public void onBackPressed() {
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            // Esto es lo que hace mi botï¿½n al pulsar ir a atrï¿½s
+
+            startActivity(new Intent(this, EdificioSearch.class));
+            finish();
+
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_HOME
+                && event.getRepeatCount() == 0) {
+
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     public void btnSendGoogleMaps(View v) {
 

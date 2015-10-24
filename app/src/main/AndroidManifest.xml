@@ -21,9 +21,9 @@
             android:name=".MenuPrincipal"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
 
-        <!--<meta-data-->
-        <!--android:name="com.google.android.maps.v2.API_KEY"-->
-        <!--android:value="" />-->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.maps.v2.API_KEY" -->
+        <!-- android:value="" /> -->
 
         <activity
             android:name=".SplashScreen"
@@ -34,19 +34,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".EdificioSearch"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        <activity android:name=".EdificioSearch" />
         <activity
             android:name=".ResultadoEdificioSearch"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
 
         <uses-library android:name="com.google.android.maps" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAfTOn6bxIxwouUcK2BFJc5OMUTYgYOOfU" />
 
-
+        <activity android:name=".FacultadSearch"></activity>
+        <activity android:name=".ResultadoFacultadSearch"></activity>
     </application>
 
 </manifest>

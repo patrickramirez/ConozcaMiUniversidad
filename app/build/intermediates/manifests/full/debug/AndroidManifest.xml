@@ -50,9 +50,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="patrick.conozcamiuniversida.EdificioSearch"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        <activity android:name="patrick.conozcamiuniversida.EdificioSearch" />
         <activity
             android:name="patrick.conozcamiuniversida.ResultadoEdificioSearch"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
@@ -63,6 +61,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAfTOn6bxIxwouUcK2BFJc5OMUTYgYOOfU" />
 
+        <activity android:name="patrick.conozcamiuniversida.FacultadSearch" >
+        </activity>
+        <activity android:name="patrick.conozcamiuniversida.ResultadoFacultadSearch" >
+        </activity>
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

@@ -78,4 +78,13 @@ public class EdificioDAO {
         return c;
 
     }
+
+    public Cursor CursorGetDatosEdificiobyID(String id) {
+        Boolean resp;
+        String sql = "select direccion,latitud,longitud from edificio where idEdificio = '" + id + "'";
+        Cursor c = database.rawQuery(sql, null);
+
+        return c;
+
+    }
 }

@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 
 import DAO.CampusDAO;
 import DAO.EdificioDAO;
+import DAO.FacultadDAO;
 import DAO.SedeDAO;
 import DAO.UniversidadDAO;
 import Utils.LoadingTask;
@@ -22,6 +23,7 @@ public class SplashScreen extends Activity implements LoadingTask.LoadingTaskFin
     SedeDAO _sedeDAO;
     CampusDAO _campusDAO;
     EdificioDAO _edificioDAO;
+    FacultadDAO _facultadDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +39,12 @@ public class SplashScreen extends Activity implements LoadingTask.LoadingTaskFin
         _sedeDAO = SedeDAO.getInstance(this);
         _campusDAO = CampusDAO.getInstance(this);
         _edificioDAO = EdificioDAO.getInstance(this);
-
-
+        _facultadDAO = FacultadDAO.getInstance(this);
 
 /*
         _uniDAO.Insertar(0, "Universidad Andres Bello", "republica 237", "", "", "disponible");
         _uniDAO.Insertar(1, "Universidad Diego Portales", "ejercito 100", "", "", "disponible");
+
         _sedeDAO.Insertar(0, "Santiago", "republica 237", "", "", "disponible", 0);
         _sedeDAO.Insertar(1, "Viña", "quillota 980", "", "", "disponible", 0);
         _sedeDAO.Insertar(2, "Santiago", "ejercito 100", "", "", "disponible", 1);
@@ -51,14 +53,16 @@ public class SplashScreen extends Activity implements LoadingTask.LoadingTaskFin
         _campusDAO.Insertar(1, "Campus republica", "republica 100", "", "", "disponible", 0);
 
 
-        _edificioDAO.Insertar(0,"A1","antonio varas 807","-33.4346167","-70.6151994","disponible",0);
-        _edificioDAO.Insertar(1,"A2","antonio varas 880","-33.4353601","-70.61473699999999","disponible",0);
+        _edificioDAO.Insertar(0, "A1", "antonio varas 807", "-33.4346167", "-70.6151994", "disponible", 0);
+        _edificioDAO.Insertar(1, "A2", "antonio varas 880", "-33.4353601", "-70.61473699999999", "disponible", 0);
+        _edificioDAO.Insertar(2, "R1", "republica 330", "-33.6628139", "-70.93269450000003", "disponible", 1);
+
+
+        _facultadDAO.Insertar(0, "Ingenieria", "disponible", 0, 0);
+        _facultadDAO.Insertar(1, "Construccion", "disponible", 0, 1);
+
+        _facultadDAO.Insertar(2, "Medicina", "disponible", 0, 2);
 */
-
-
-
-
-
 
         new LoadingTask(barra, SplashScreen.this).execute();
     }

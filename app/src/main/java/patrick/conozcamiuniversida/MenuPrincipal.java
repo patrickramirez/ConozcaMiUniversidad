@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 
 import patrick.conozcamiuniversida.R;
@@ -19,5 +20,31 @@ public class MenuPrincipal extends Activity {
     public void BtnEdificio(View v) {
         startActivity(new Intent(this, EdificioSearch.class));
         finish();
+    }
+
+    public void BtnFacultad(View v) {
+        startActivity(new Intent(this, FacultadSearch.class));
+        finish();
+    }
+
+    public void onBackPressed() {
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            // Esto es lo que hace mi botï¿½n al pulsar ir a atrï¿½s
+
+
+            finish();
+
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_HOME
+                && event.getRepeatCount() == 0) {
+
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
