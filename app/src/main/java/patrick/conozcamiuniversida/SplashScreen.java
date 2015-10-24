@@ -40,16 +40,16 @@ public class SplashScreen extends Activity implements LoadingTask.LoadingTaskFin
         _campusDAO = CampusDAO.getInstance(this);
         _edificioDAO = EdificioDAO.getInstance(this);
         _facultadDAO = FacultadDAO.getInstance(this);
-
 /*
-        _uniDAO.Insertar(0, "Universidad Andres Bello", "republica 237", "", "", "disponible");
+
+        _uniDAO.Insertar(0, "Universidad Andres Bello", "republica 237", "", "", "disponible");---
         _uniDAO.Insertar(1, "Universidad Diego Portales", "ejercito 100", "", "", "disponible");
 
-        _sedeDAO.Insertar(0, "Santiago", "republica 237", "", "", "disponible", 0);
+        _sedeDAO.Insertar(0, "Santiago", "republica 237", "", "", "disponible", 0);--
         _sedeDAO.Insertar(1, "Viña", "quillota 980", "", "", "disponible", 0);
         _sedeDAO.Insertar(2, "Santiago", "ejercito 100", "", "", "disponible", 1);
 
-        _campusDAO.Insertar(0, "Campus Antonio Varas", "antonio varas 807", "", "", "disponible", 0);
+        _campusDAO.Insertar(0, "Campus Antonio Varas", "antonio varas 807", "", "", "disponible", 0);--
         _campusDAO.Insertar(1, "Campus republica", "republica 100", "", "", "disponible", 0);
 
 
@@ -62,8 +62,8 @@ public class SplashScreen extends Activity implements LoadingTask.LoadingTaskFin
         _facultadDAO.Insertar(1, "Construccion", "disponible", 0, 1);
 
         _facultadDAO.Insertar(2, "Medicina", "disponible", 0, 2);
-*/
 
+*/
         new LoadingTask(barra, SplashScreen.this).execute();
     }
 

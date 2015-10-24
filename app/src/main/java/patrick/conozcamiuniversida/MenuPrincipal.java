@@ -27,6 +27,11 @@ public class MenuPrincipal extends Activity {
         finish();
     }
 
+    public void BtnCambiarRegistro(View v) {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
+    }
+
     public void onBackPressed() {
 
     }
@@ -34,8 +39,6 @@ public class MenuPrincipal extends Activity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            // Esto es lo que hace mi botï¿½n al pulsar ir a atrï¿½s
-
 
             finish();
 

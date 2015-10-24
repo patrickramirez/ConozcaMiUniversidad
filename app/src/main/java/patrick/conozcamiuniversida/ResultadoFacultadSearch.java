@@ -124,10 +124,16 @@ public class ResultadoFacultadSearch extends FragmentActivity {
 
     public void btnSendGoogleMaps(View v) {
 
-        Uri gmmIntentUri = Uri.parse("geo:" + latitud + "," + longitud);
+
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + latitud + "," + longitud);
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
+
+//        Uri gmmIntentUri = Uri.parse("geo:" + latitud + "," + longitud);
+//        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+//        mapIntent.setPackage("com.google.android.apps.maps");
+//        startActivity(mapIntent);
 
     }
 }
