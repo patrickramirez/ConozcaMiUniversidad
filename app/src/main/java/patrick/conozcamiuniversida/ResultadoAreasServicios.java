@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -113,4 +114,26 @@ public class ResultadoAreasServicios extends FragmentActivity {
         startActivity(new Intent(this, ResultadoMapaArea.class));
         finish();
     }
+
+    public void onBackPressed() {
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            // Esto es lo que hace mi botï¿½n al pulsar ir a atrï¿½s
+
+            startActivity(new Intent(this, AreaServicio.class));
+            finish();
+
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_HOME
+                && event.getRepeatCount() == 0) {
+
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 }

@@ -43,8 +43,8 @@ public class SplashScreen extends Activity implements LoadingTask.LoadingTaskFin
         _edificioDAO = EdificioDAO.getInstance(this);
         _facultadDAO = FacultadDAO.getInstance(this);
         _sitioDAO = SitioDAO.getInstance(this);
-/*
 
+/*
         _uniDAO.Insertar(0, "Universidad Andres Bello", "republica 237", "", "", "disponible");
         _uniDAO.Insertar(1, "Universidad Diego Portales", "ejercito 100", "", "", "disponible");
 
@@ -70,13 +70,13 @@ public class SplashScreen extends Activity implements LoadingTask.LoadingTaskFin
 
         _facultadDAO.Insertar(2, "Medicina", "disponible", 0, 2);
 
-        _sitioDAO.Insertar(0,"Baño","Baños a lado derecho de escalera principal","R.drawable.banoa1","disponible",0);
-        _sitioDAO.Insertar(1,"Baño","","R.drawable.banoa2","disponible",1);
-        _sitioDAO.Insertar(2,"Casino","","R.drawable.casinoa2","cerrado",1);
-        _sitioDAO.Insertar(3,"Gimnasio","","R.drawable.gimnasioa2","disponible",1);
-        _sitioDAO.Insertar(4,"Cancha Tenis","","R.drawable.gimnasioa2","disponible",5);
-        _sitioDAO.Insertar(5,"sala","sala 404","R.drawable.gimnasioa2","disponible",3);
-        _sitioDAO.Insertar(6,"anfiteatro","","R.drawable.gimnasioa2","disponible",4);
+        _sitioDAO.Insertar(0,"Baño","Baño A1","Baños a lado derecho de escalera principal","http://s8.postimg.org/ve200vnlx/gimnasioa2.png","disponible",0);
+        _sitioDAO.Insertar(1,"Baño","Baño A2","","R.drawable.banoa2","disponible",1);
+        _sitioDAO.Insertar(2,"Casino","Casino principal","","R.drawable.casinoa2","cerrado",1);
+        _sitioDAO.Insertar(3,"Gimnasio","Gimnasio central","","R.drawable.gimnasioa2","disponible",1);
+        _sitioDAO.Insertar(4,"Cancha Tenis","Cancha 1","","R.drawable.gimnasioa2","disponible",5);
+        _sitioDAO.Insertar(5,"sala","sala 404","","R.drawable.gimnasioa2","disponible",3);
+        _sitioDAO.Insertar(6,"anfiteatro","Anfiteatro 1","","R.drawable.gimnasioa2","disponible",4);
 
 */
         new LoadingTask(barra, SplashScreen.this).execute();

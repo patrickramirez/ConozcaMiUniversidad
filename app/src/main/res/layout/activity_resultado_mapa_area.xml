@@ -34,7 +34,7 @@
                     android:id="@+id/txtNombreEdificioplano"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Large Text"
+
                     android:textColor="#FFFFFF"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
             </LinearLayout>
@@ -53,7 +53,7 @@
                     android:layout_alignEnd="@+id/map"
                     android:layout_alignParentTop="true"
                     android:layout_gravity="right"
-                    android:text="Disponible"
+
                     android:textColor="#FFFFFF"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -62,15 +62,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="462dp"
+            android:layout_height="450dp"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical">
 
-            <ImageView
+
+            <patrick.conozcamiuniversida.widget.ZoomImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageView4"
-                android:layout_gravity="center_horizontal" />
+                android:id="@+id/imageView4" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -81,11 +82,11 @@
 
             <TextView
                 android:id="@+id/txtdetalleplano"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_alignBottom="@+id/button4"
                 android:layout_alignParentStart="true"
-                android:text="Antonio varas 807"
+
                 android:textColor="#FFFFFF"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
         </LinearLayout>

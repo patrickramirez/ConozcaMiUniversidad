@@ -79,21 +79,25 @@ public class EdificioDAO {
         String sql1 = "select idEdificio from sitio where tipo='" + Nombre + "'";
         Cursor ccc = database.rawQuery(sql1, null);
         if (ccc.moveToFirst()) {
-            Idcampus = ccc.getString(0);
+
+            do {
+                Idcampus = ccc.getString(0);
 
 
-            String sql = "select nombreEdificio from edificio where idEdificio ='" + Idcampus + "'";
-            Cursor c = database.rawQuery(sql, null);
+                String sql = "select nombreEdificio from edificio where idEdificio ='" + Idcampus + "'";
+                Cursor c = database.rawQuery(sql, null);
 
-            if (c != null && c.moveToFirst()) {
-                do {
-                    _edificioMOD = new EdificioMOD();
-                    _edificioMOD.setNombreEdificio(c.getString(c.getColumnIndex("nombreEdificio")));
+                if (c != null && c.moveToFirst()) {
+                    do {
+                        _edificioMOD = new EdificioMOD();
+                        _edificioMOD.setNombreEdificio(c.getString(c.getColumnIndex("nombreEdificio")));
 
 
-                    lista.add(_edificioMOD);
-                } while (c.moveToNext());
-            }
+                        lista.add(_edificioMOD);
+                    } while (c.moveToNext());
+                }
+
+            } while (ccc.moveToNext());
         }
 
 
