@@ -4,6 +4,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import MOD.EdificioMOD;
 import MOD.SedeMOD;
 import MOD.SitioMOD;
 import Utils.DB_helper;
@@ -48,6 +52,57 @@ public class SitioDAO {
 
         Cursor cc = database.rawQuery(sql1, null);
         return cc;
+
+    }
+
+    public List<SitioMOD> getSitioList(String campus) {
+        List<SitioMOD> lista = new ArrayList<SitioMOD>();
+        SitioMOD _edificioMOD;
+
+        String Idcampus = "";
+        String ideficio = "";
+
+        String sql1 = "select idcampus from campus where nombrecampus='" + campus + "'";
+        Cursor ccc = database.rawQuery(sql1, null);
+        if (ccc.moveToFirst()) {
+            Idcampus = ccc.getString(0);
+        }
+
+        String sql2 = "select idEdificio from edificio where idcampus ='" + Idcampus + "'";
+        Cursor cc = database.rawQuery(sql2, null);
+        if (cc.moveToFirst()) {
+            ideficio = cc.getString(0);
+
+        }
+        String sql = "select distinct tipo from sitio where idedificio = '" + ideficio + "'";
+        Cursor c = database.rawQuery(sql, null);
+
+        if (c != null && c.moveToFirst()) {
+            do {
+
+                if (!c.getString(c.getColumnIndex("tipo")).equalsIgnoreCase("sala")) {
+                    if (!c.getString(c.getColumnIndex("tipo")).equals("laboratorio")) {
+                        if (!c.getString(c.getColumnIndex("tipo")).equals("oficina")) {
+                            if (!c.getString(c.getColumnIndex("tipo")).equals("departamento")) {
+                                if (!c.getString(c.getColumnIndex("tipo")).equals("decanato")) {
+                                    _edificioMOD = new SitioMOD();
+                                    _edificioMOD.setTipoSitio(c.getString(c.getColumnIndex("tipo")));
+
+
+                                    lista.add(_edificioMOD);
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+            } while (c.moveToNext());
+        }
+
+
+        return lista;
+
 
     }
 }

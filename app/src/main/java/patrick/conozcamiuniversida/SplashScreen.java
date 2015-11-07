@@ -54,11 +54,15 @@ public class SplashScreen extends Activity implements LoadingTask.LoadingTaskFin
 
         _campusDAO.Insertar(0, "Campus Antonio Varas", "antonio varas 807", "", "", "disponible", 0);
         _campusDAO.Insertar(1, "Campus republica", "republica 100", "", "", "disponible", 0);
+        _campusDAO.Insertar(2, "Campus Casona", "republica 300", "", "", "disponible", 1);
 
 
         _edificioDAO.Insertar(0, "A1", "antonio varas 807", "-33.4346167", "-70.6151994", "disponible", 0);
         _edificioDAO.Insertar(1, "A2", "antonio varas 880", "-33.4353601", "-70.61473699999999", "disponible", 0);
         _edificioDAO.Insertar(2, "R1", "republica 330", "-33.6628139", "-70.93269450000003", "disponible", 1);
+        _edificioDAO.Insertar(3, "R2", "republica 330", "-33.6628139", "-70.93269450000003", "disponible", 1);
+        _edificioDAO.Insertar(4, "R3", "republica 330", "-33.6628139", "-70.93269450000003", "disponible", 1);
+        _edificioDAO.Insertar(5, "V4", "republica 330", "-33.6628139", "-70.93269450000003", "disponible", 2);
 
 
         _facultadDAO.Insertar(0, "Ingenieria", "disponible", 0, 0);
@@ -70,9 +74,11 @@ public class SplashScreen extends Activity implements LoadingTask.LoadingTaskFin
         _sitioDAO.Insertar(1,"Baño","","R.drawable.banoa2","disponible",1);
         _sitioDAO.Insertar(2,"Casino","","R.drawable.casinoa2","cerrado",1);
         _sitioDAO.Insertar(3,"Gimnasio","","R.drawable.gimnasioa2","disponible",1);
+        _sitioDAO.Insertar(4,"Cancha Tenis","","R.drawable.gimnasioa2","disponible",5);
+        _sitioDAO.Insertar(5,"sala","sala 404","R.drawable.gimnasioa2","disponible",3);
+        _sitioDAO.Insertar(6,"anfiteatro","","R.drawable.gimnasioa2","disponible",4);
 
 */
-
         new LoadingTask(barra, SplashScreen.this).execute();
     }
 

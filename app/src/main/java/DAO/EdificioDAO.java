@@ -70,6 +70,38 @@ public class EdificioDAO {
 
     }
 
+
+    public List<EdificioMOD> getEdificioListbyTipoSitio(String Nombre) {
+        List<EdificioMOD> lista = new ArrayList<EdificioMOD>();
+        EdificioMOD _edificioMOD;
+        String Idcampus = "";
+
+        String sql1 = "select idEdificio from sitio where tipo='" + Nombre + "'";
+        Cursor ccc = database.rawQuery(sql1, null);
+        if (ccc.moveToFirst()) {
+            Idcampus = ccc.getString(0);
+
+
+            String sql = "select nombreEdificio from edificio where idEdificio ='" + Idcampus + "'";
+            Cursor c = database.rawQuery(sql, null);
+
+            if (c != null && c.moveToFirst()) {
+                do {
+                    _edificioMOD = new EdificioMOD();
+                    _edificioMOD.setNombreEdificio(c.getString(c.getColumnIndex("nombreEdificio")));
+
+
+                    lista.add(_edificioMOD);
+                } while (c.moveToNext());
+            }
+        }
+
+
+        return lista;
+
+
+    }
+
     public Cursor CursorGetDatosEdificio(String Edificio) {
         Boolean resp;
         String sql = "select nombreEdificio,direccion,latitud,longitud,estado from edificio where nombreEdificio = '" + Edificio + "'";

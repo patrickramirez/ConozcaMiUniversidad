@@ -39,26 +39,26 @@
                 android:layout_weight="0.5"
                 android:orientation="vertical">
 
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Seleccione una Edificio"
+                    android:text="Seleccione Area"
                     android:textColor="#FFFFFF"
-                    android:id="@+id/textView6"
+                    android:id="@+id/textView10"
                     android:gravity="center"
                     android:layout_gravity="center_horizontal" />
 
-
                 <Spinner
+                    style="@style/SpinnerItem.DropDownItem"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinnerEdificiosAreas"
+                    android:id="@+id/spinnerAreaServicios"
                     android:layout_below="@+id/imageButton"
                     android:layout_centerHorizontal="true"
                     android:background="#6943a2ff"
-                    android:spinnerMode="dropdown"
-                    style="@style/SpinnerItem.DropDownItem" />
+                    android:spinnerMode="dropdown" />
             </LinearLayout>
 
         </LinearLayout>
@@ -73,100 +73,52 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5"
-                    android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Seleccione una Edificio"
+                    android:textColor="#FFFFFF"
+                    android:id="@+id/textView9"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal" />
 
-                    <Button
-                        android:id="@+id/button5"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="BAÑOS"
-                        android:onClick="BtnBanio" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:id="@+id/button6"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="CASINO" />
-                </LinearLayout>
+                <Spinner
+                    style="@style/SpinnerItem.DropDownItem"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinnerEdificioAreasServicios1"
+                    android:layout_below="@+id/imageButton"
+                    android:layout_centerHorizontal="true"
+                    android:background="#6943a2ff"
+                    android:spinnerMode="dropdown" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5"
-                    android:orientation="vertical">
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/imageButton8"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/botonbuscar"
+                    android:onClick="btnBuscar" />
 
-                    <Button
-                        android:id="@+id/button7"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="ENFERMERIA" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:id="@+id/button8"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="BIBLIOTECA" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:id="@+id/button9"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="GIMNACIO" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:id="@+id/button10"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="LABORATORIOS" />
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Buscar"
+                    android:textSize="30dp"
+                    android:id="@+id/textView6"
+                    android:textColor="#FFFFFF"
+                    android:layout_gravity="center_horizontal" />
             </LinearLayout>
         </LinearLayout>
 

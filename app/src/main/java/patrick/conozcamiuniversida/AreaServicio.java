@@ -17,15 +17,18 @@ import android.widget.Spinner;
 import java.util.List;
 
 import DAO.EdificioDAO;
+import DAO.SitioDAO;
 import MOD.EdificioMOD;
+import MOD.SitioMOD;
 
 public class AreaServicio extends Activity implements AdapterView.OnItemSelectedListener {
 
     EdificioDAO _edificioDAO;
+    SitioDAO _sitioDAO;
     String[] items;
     ArrayAdapter<String> adapter;
     SharedPreferences prefs;
-    Spinner spinnerEdificiosAreas;
+    Spinner spinnerEdificiosAreas1, spinnerAreaServicios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,24 +38,39 @@ public class AreaServicio extends Activity implements AdapterView.OnItemSelected
         setContentView(R.layout.activity_area_servicio);
 
         _edificioDAO = EdificioDAO.getInstance(this);
-        spinnerEdificiosAreas = (Spinner) findViewById(R.id.spinnerEdificiosAreas);
+        _sitioDAO = SitioDAO.getInstance(this);
+        spinnerEdificiosAreas1 = (Spinner) findViewById(R.id.spinnerEdificioAreasServicios1);
+        spinnerAreaServicios = (Spinner) findViewById(R.id.spinnerAreaServicios);
+
         prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-        loadSpinnerEdificio();
+        LoadSpinnerAreas();
     }
 
-    public void BtnBanio(View v) {
-        SharedPreferences.Editor editor;
-        editor = prefs.edit();
-        editor.putString("TipoSeleccionado", "Baño");
-        editor.commit();
+    public void btnBuscar(View v) {
         startActivity(new Intent(this, ResultadoAreasServicios.class));
         finish();
     }
 
-    private void loadSpinnerEdificio() {
-        String NombreCampus = prefs.getString("campus", "");
+    private void LoadSpinnerAreas() {
+        String Nombre = prefs.getString("campus", "");
+        List<SitioMOD> lista = _sitioDAO.getSitioList(Nombre);
+        items = new String[lista.size()];
+        for (int i = 0; i < lista.size(); i++) {
 
-        List<EdificioMOD> list = _edificioDAO.getEdificioListbyNombreCampus(NombreCampus);
+            items[i] = lista.get(i).getTipoSitio();
+        }
+
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+
+        spinnerAreaServicios.setAdapter(adapter);
+        spinnerAreaServicios.setOnItemSelectedListener(this);
+
+    }
+
+    private void loadSpinnerEdificio() {
+        String Nombre = prefs.getString("NombreTipoSitioSelect", "");
+
+        List<EdificioMOD> list = _edificioDAO.getEdificioListbyTipoSitio(Nombre);
         items = new String[list.size()];
         for (int i = 0; i < list.size(); i++) {
 
@@ -61,8 +79,8 @@ public class AreaServicio extends Activity implements AdapterView.OnItemSelected
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
 
-        spinnerEdificiosAreas.setAdapter(adapter);
-        spinnerEdificiosAreas.setOnItemSelectedListener(this);
+        spinnerEdificiosAreas1.setAdapter(adapter);
+        spinnerEdificiosAreas1.setOnItemSelectedListener(this);
 
     }
 
@@ -72,10 +90,19 @@ public class AreaServicio extends Activity implements AdapterView.OnItemSelected
 
         switch (parent.getId()) {
 
-            case R.id.spinnerEdificiosAreas:
-                String nombreEdificio = parent.getItemAtPosition(position).toString();
+            case R.id.spinnerAreaServicios:
+                String nombre = parent.getItemAtPosition(position).toString();
                 editor = prefs.edit();
-                editor.putString("NombreEdificioSeleccionadoEnArea", nombreEdificio);
+                editor.putString("NombreTipoSitioSelect", nombre);
+                editor.commit();
+
+                loadSpinnerEdificio();
+                break;
+
+            case R.id.spinnerEdificioAreasServicios1:
+                String nombre1 = parent.getItemAtPosition(position).toString();
+                editor = prefs.edit();
+                editor.putString("NombreEdificioAreaServicioSelect", nombre1);
                 editor.commit();
 
 

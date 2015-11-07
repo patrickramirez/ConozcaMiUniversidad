@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -55,8 +56,8 @@ public class ResultadoAreasServicios extends FragmentActivity {
         MarkerOptions options = new MarkerOptions();
 
         gm = supportmapfragment.getMap();
-        String EdificioArea = prefs.getString("NombreEdificioSeleccionadoEnArea", "");
-        String tipoSeleccionado = prefs.getString("TipoSeleccionado", "");
+        String EdificioArea = prefs.getString("NombreEdificioAreaServicioSelect", "");
+        String tipoSeleccionado = prefs.getString("NombreTipoSitioSelect", "");
 
         if (EdificioArea != null) {
             if (null != gm) {
@@ -95,6 +96,17 @@ public class ResultadoAreasServicios extends FragmentActivity {
 
             }
         }
+    }
+
+    public void btnSendGoogleMaps(View v) {
+        String label = "Resultado Edificios";
+        String uriBegin = "geo:" + latitud + "," + longitud;
+        String query = latitud + "," + longitud + "(" + label + ")";
+        String encodedQuery = Uri.encode(query);
+        String uriString = uriBegin + "?q=" + encodedQuery + "&z=16";
+        Uri uri = Uri.parse(uriString);
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 
     public void btnEstoyAqui(View v) {
