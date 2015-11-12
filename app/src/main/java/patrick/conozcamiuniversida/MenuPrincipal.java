@@ -32,6 +32,11 @@ public class MenuPrincipal extends Activity {
         finish();
     }
 
+    public void BtnOficina(View v) {
+        startActivity(new Intent(this, Oficina.class));
+        finish();
+    }
+
     public void BtnAreaServicios(View v) {
         startActivity(new Intent(this, AreaServicio.class));
         finish();

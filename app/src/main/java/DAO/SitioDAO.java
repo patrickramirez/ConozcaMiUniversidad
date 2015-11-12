@@ -127,4 +127,76 @@ public class SitioDAO {
 
 
     }
+
+
+    public List<SitioMOD> getOficinasList(String campus) {
+        List<SitioMOD> lista = new ArrayList<SitioMOD>();
+        SitioMOD _edificioMOD;
+
+        String Idcampus = "";
+        String ideficio = "";
+
+        String sql1 = "select idcampus from campus where nombrecampus='" + campus + "'";
+        Cursor ccc = database.rawQuery(sql1, null);
+        if (ccc.moveToFirst()) {
+            Idcampus = ccc.getString(0);
+        }
+
+        String sql2 = "select distinct idEdificio from edificio where idcampus ='" + Idcampus + "'";
+        Cursor cc = database.rawQuery(sql2, null);
+        if (cc.moveToFirst()) {
+
+            do {
+                ideficio = cc.getString(0);
+
+
+                String sql = "select  nombreSitio from sitio where idedificio = '" + ideficio + "'";
+                Cursor c = database.rawQuery(sql, null);
+
+                if (c != null && c.moveToFirst()) {
+                    do {
+
+
+                        if (c.getString(c.getColumnIndex("tipo")).equals("oficina") || c.getString(c.getColumnIndex("tipo")).equals("decanato") || c.getString(c.getColumnIndex("tipo")).equals("departamento")) {
+
+
+                            String tipoSitio = c.getString(c.getColumnIndex("nombreSitio"));
+//
+//                            if (lista.size() != 0)
+//                            {
+//                                for (int i = 0; i < lista.size(); i++)
+//                                {
+//                                    _edificioMOD = lista.get(i);
+//                                    if (!_edificioMOD.getTipoSitio().equalsIgnoreCase(tipoSitio))
+//                                    {
+//                                        _edificioMOD = new SitioMOD();
+//                                        _edificioMOD.setTipoSitio(tipoSitio);
+//
+//
+//                                        lista.add(_edificioMOD);
+//                                        break;
+//                                    }
+//                                }
+//                            } else
+//                            {
+                            _edificioMOD = new SitioMOD();
+                            _edificioMOD.setTipoSitio(tipoSitio);
+
+
+                            lista.add(_edificioMOD);
+//                            }
+//
+//
+                        }
+
+
+                    } while (c.moveToNext());
+                }
+            } while (cc.moveToNext());
+        }
+
+        return lista;
+
+
+    }
 }

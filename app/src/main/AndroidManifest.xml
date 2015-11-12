@@ -47,8 +47,9 @@
         <activity android:name=".FacultadSearch" />
         <activity android:name=".ResultadoFacultadSearch" />
         <activity android:name=".AreaServicio" />
-        <activity android:name=".ResultadoAreasServicios"></activity>
-        <activity android:name=".ResultadoMapaArea"></activity>
+        <activity android:name=".ResultadoAreasServicios" />
+        <activity android:name=".ResultadoMapaArea" />
+        <activity android:name=".Oficina"></activity>
     </application>
 
 </manifest>

@@ -112,6 +112,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageButton5"
+                android:onClick="BtnOficina"
                 android:background="@drawable/oficinalogo"
                 android:layout_below="@+id/imageButton4"
                 android:layout_alignLeft="@+id/imageButton3"

@@ -65,6 +65,8 @@
         <activity android:name="patrick.conozcamiuniversida.AreaServicio" />
         <activity android:name="patrick.conozcamiuniversida.ResultadoAreasServicios" />
         <activity android:name="patrick.conozcamiuniversida.ResultadoMapaArea" />
+        <activity android:name="patrick.conozcamiuniversida.Oficina" >
+        </activity>
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
