@@ -61,7 +61,7 @@ public class ResultadoMapaArea extends Activity {
         prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
 
         String EdificioArea = prefs.getString("NombreEdificioAreaServicioSelect", "");
-        String tipoSeleccionado = prefs.getString("TipoSeleccionado", "");
+        String tipoSeleccionado = prefs.getString("NombreTipoSitioSelect", "");
 
         Cursor cursor = _sitioDAO.getDatos(EdificioArea, tipoSeleccionado);
         String ruta;

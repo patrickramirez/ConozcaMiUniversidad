@@ -42,6 +42,11 @@ public class MenuPrincipal extends Activity {
         finish();
     }
 
+    public void BtnSala(View v) {
+        startActivity(new Intent(this, Sala.class));
+        finish();
+    }
+
     public void onBackPressed() {
 
     }

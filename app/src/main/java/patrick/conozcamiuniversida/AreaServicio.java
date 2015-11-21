@@ -56,8 +56,8 @@ public class AreaServicio extends Activity implements AdapterView.OnItemSelected
         List<SitioMOD> lista = _sitioDAO.getSitioList(Nombre);
         items = new String[lista.size()];
         for (int i = 0; i < lista.size(); i++) {
-
-            items[i] = lista.get(i).getTipoSitio();
+            String tipo = lista.get(i).getTipoSitio();
+            items[i] = tipo;
         }
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);

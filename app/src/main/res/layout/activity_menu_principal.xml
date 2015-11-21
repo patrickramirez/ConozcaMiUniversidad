@@ -136,6 +136,7 @@
                 android:background="@drawable/salalogo"
                 android:layout_marginLeft="36dp"
                 android:layout_marginStart="36dp"
+                android:onClick="BtnSala"
                 android:layout_below="@+id/imageButton5"
                 android:layout_alignLeft="@+id/imageButton5"
                 android:layout_alignStart="@+id/imageButton5"

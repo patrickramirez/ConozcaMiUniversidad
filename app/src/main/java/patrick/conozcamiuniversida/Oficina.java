@@ -47,7 +47,7 @@ public class Oficina extends Activity implements AdapterView.OnItemSelectedListe
     }
 
     public void btnBuscar(View v) {
-        startActivity(new Intent(this, ResultadoAreasServicios.class));
+        startActivity(new Intent(this, ResultadoOficina.class));
         finish();
     }
 
@@ -56,8 +56,8 @@ public class Oficina extends Activity implements AdapterView.OnItemSelectedListe
         List<SitioMOD> lista = _sitioDAO.getOficinasList(Nombre);
         items = new String[lista.size()];
         for (int i = 0; i < lista.size(); i++) {
+            items[i] = lista.get(i).getTipoSitio();
 
-            items[i] = lista.get(i).getNombreSitio();
         }
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
@@ -68,9 +68,9 @@ public class Oficina extends Activity implements AdapterView.OnItemSelectedListe
     }
 
     private void loadSpinnerEdificio() {
-        String Nombre = prefs.getString("NombreTipoSitioSelect", "");
+        String Nombre = prefs.getString("NombreOficinaSelect", "");
 
-        List<EdificioMOD> list = _edificioDAO.getEdificioListbyTipoSitio(Nombre);
+        List<EdificioMOD> list = _edificioDAO.getEdificioListbyNombreSitio(Nombre);
         items = new String[list.size()];
         for (int i = 0; i < list.size(); i++) {
 

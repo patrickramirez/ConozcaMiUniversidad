@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="19"
+        android:minSdkVersion="16"
         android:targetSdkVersion="23" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -65,7 +65,12 @@
         <activity android:name="patrick.conozcamiuniversida.AreaServicio" />
         <activity android:name="patrick.conozcamiuniversida.ResultadoAreasServicios" />
         <activity android:name="patrick.conozcamiuniversida.ResultadoMapaArea" />
-        <activity android:name="patrick.conozcamiuniversida.Oficina" >
+        <activity android:name="patrick.conozcamiuniversida.Oficina" />
+        <activity android:name="patrick.conozcamiuniversida.Sala" >
+        </activity>
+        <activity android:name="patrick.conozcamiuniversida.ResultadoOficina" >
+        </activity>
+        <activity android:name="patrick.conozcamiuniversida.ResultadoMapaOficina" >
         </activity>
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity

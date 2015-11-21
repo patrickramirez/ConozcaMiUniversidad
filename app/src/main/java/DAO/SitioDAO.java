@@ -55,6 +55,21 @@ public class SitioDAO {
 
     }
 
+    public Cursor getDatos2(String nombreEdificio, String NombreSitio) {
+        String idedificio = "";
+        String sql = "select idEdificio from edificio where nombreEdificio='" + nombreEdificio + "'";
+        Cursor c = database.rawQuery(sql, null);
+        if (c.moveToFirst()) {
+            idedificio = c.getString(0);
+        }
+
+        String sql1 = "select * from sitio where NombreSitio='" + NombreSitio + "' and idEdificio='" + idedificio + "'";
+
+        Cursor cc = database.rawQuery(sql1, null);
+        return cc;
+
+    }
+
     public List<SitioMOD> getSitioList(String campus) {
         List<SitioMOD> lista = new ArrayList<SitioMOD>();
         SitioMOD _edificioMOD;
@@ -76,44 +91,35 @@ public class SitioDAO {
                 ideficio = cc.getString(0);
 
 
-                String sql = "select distinct tipo from sitio where idedificio = '" + ideficio + "'";
+                String sql = "select * from sitio where tipo!='Sala' and tipo != 'Laboratorio' and tipo!= 'Oficina' and tipo!='Decanato' and tipo!= 'Departamento' order by tipo asc";
                 Cursor c = database.rawQuery(sql, null);
 
-                if (c != null && c.moveToFirst()) {
+                if (c.moveToFirst()) {
                     do {
 
-                        if (!c.getString(c.getColumnIndex("tipo")).equalsIgnoreCase("sala")) {
-                            if (!c.getString(c.getColumnIndex("tipo")).equals("laboratorio")) {
-                                if (!c.getString(c.getColumnIndex("tipo")).equals("oficina")) {
-                                    if (!c.getString(c.getColumnIndex("tipo")).equals("departamento")) {
-                                        if (!c.getString(c.getColumnIndex("tipo")).equals("decanato")) {
+                        String idedif = c.getString(c.getColumnIndex("idEdificio")).toString();
 
-                                            String tipoSitio = c.getString(c.getColumnIndex("tipo"));
+                        if (idedif.equalsIgnoreCase(ideficio)) {
+                            String tipoSitio = c.getString(c.getColumnIndex("tipo"));
 
-                                            if (lista.size() != 0) {
-                                                for (int i = 0; i < lista.size(); i++) {
-                                                    _edificioMOD = lista.get(i);
-                                                    if (!_edificioMOD.getTipoSitio().equalsIgnoreCase(tipoSitio)) {
-                                                        _edificioMOD = new SitioMOD();
-                                                        _edificioMOD.setTipoSitio(tipoSitio);
+                            if (lista.size() != 0) {
+                                for (int i = 0; i < lista.size(); i++) {
+                                    _edificioMOD = lista.get(i);
+                                    if (!_edificioMOD.getTipoSitio().equalsIgnoreCase(tipoSitio)) {
+                                        _edificioMOD = new SitioMOD();
+                                        _edificioMOD.setTipoSitio(tipoSitio);
 
 
-                                                        lista.add(_edificioMOD);
-                                                        break;
-                                                    }
-                                                }
-                                            } else {
-                                                _edificioMOD = new SitioMOD();
-                                                _edificioMOD.setTipoSitio(tipoSitio);
-
-
-                                                lista.add(_edificioMOD);
-                                            }
-
-
-                                        }
+                                        lista.add(_edificioMOD);
+                                        break;
                                     }
                                 }
+                            } else {
+                                _edificioMOD = new SitioMOD();
+                                _edificioMOD.setTipoSitio(tipoSitio);
+
+
+                                lista.add(_edificioMOD);
                             }
                         }
 
@@ -131,7 +137,7 @@ public class SitioDAO {
 
     public List<SitioMOD> getOficinasList(String campus) {
         List<SitioMOD> lista = new ArrayList<SitioMOD>();
-        SitioMOD _edificioMOD;
+        SitioMOD _edificioMOD = null;
 
         String Idcampus = "";
         String ideficio = "";
@@ -150,48 +156,67 @@ public class SitioDAO {
                 ideficio = cc.getString(0);
 
 
-                String sql = "select  nombreSitio from sitio where idedificio = '" + ideficio + "'";
+                String sql = "select * from sitio where tipo='Oficina' or tipo='Decanato' or tipo='Departamento'";
                 Cursor c = database.rawQuery(sql, null);
 
-                if (c != null && c.moveToFirst()) {
+                if (c.moveToFirst()) {
                     do {
-
-
-                        if (c.getString(c.getColumnIndex("tipo")).equals("oficina") || c.getString(c.getColumnIndex("tipo")).equals("decanato") || c.getString(c.getColumnIndex("tipo")).equals("departamento")) {
-
-
-                            String tipoSitio = c.getString(c.getColumnIndex("nombreSitio"));
-//
-//                            if (lista.size() != 0)
-//                            {
-//                                for (int i = 0; i < lista.size(); i++)
-//                                {
-//                                    _edificioMOD = lista.get(i);
-//                                    if (!_edificioMOD.getTipoSitio().equalsIgnoreCase(tipoSitio))
-//                                    {
-//                                        _edificioMOD = new SitioMOD();
-//                                        _edificioMOD.setTipoSitio(tipoSitio);
-//
-//
-//                                        lista.add(_edificioMOD);
-//                                        break;
-//                                    }
-//                                }
-//                            } else
-//                            {
+                        String idedif = c.getString(c.getColumnIndex("idEdificio")).toString();
+                        if (idedif.equalsIgnoreCase(ideficio)) {
+                            String tipoSitio = c.getString(c.getColumnIndex("NombreSitio")).toString();
                             _edificioMOD = new SitioMOD();
+
+
                             _edificioMOD.setTipoSitio(tipoSitio);
-
-
                             lista.add(_edificioMOD);
-//                            }
-//
-//
                         }
-
 
                     } while (c.moveToNext());
                 }
+
+            } while (cc.moveToNext());
+        }
+
+        return lista;
+
+
+    }
+
+
+    public List<SitioMOD> getSalasLaboratoriosList(String Edificio) {
+        List<SitioMOD> lista = new ArrayList<SitioMOD>();
+        SitioMOD _edificioMOD = null;
+
+        String Idcampus = "";
+        String ideficio = "";
+
+
+        String sql2 = "select distinct idEdificio from edificio where nombreEdificio ='" + Edificio + "'";
+        Cursor cc = database.rawQuery(sql2, null);
+        if (cc.moveToFirst()) {
+
+            do {
+                ideficio = cc.getString(0);
+
+
+                String sql = "select * from sitio where tipo='Sala' or tipo='Laboratorio' order by NombreSitio asc";
+                Cursor c = database.rawQuery(sql, null);
+
+                if (c.moveToFirst()) {
+                    do {
+                        String idedif = c.getString(c.getColumnIndex("idEdificio")).toString();
+                        if (idedif.equalsIgnoreCase(ideficio)) {
+                            String tipoSitio = c.getString(c.getColumnIndex("NombreSitio")).toString();
+                            _edificioMOD = new SitioMOD();
+
+
+                            _edificioMOD.setTipoSitio(tipoSitio);
+                            lista.add(_edificioMOD);
+                        }
+
+                    } while (c.moveToNext());
+                }
+
             } while (cc.moveToNext());
         }
 
