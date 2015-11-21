@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import java.util.Collections;
 import java.util.List;
 
 import DAO.EdificioDAO;
@@ -54,6 +55,7 @@ public class AreaServicio extends Activity implements AdapterView.OnItemSelected
     private void LoadSpinnerAreas() {
         String Nombre = prefs.getString("campus", "");
         List<SitioMOD> lista = _sitioDAO.getSitioList(Nombre);
+
         items = new String[lista.size()];
         for (int i = 0; i < lista.size(); i++) {
             String tipo = lista.get(i).getTipoSitio();
