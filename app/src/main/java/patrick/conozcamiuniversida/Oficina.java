@@ -60,8 +60,7 @@ public class Oficina extends Activity implements AdapterView.OnItemSelectedListe
 
         }
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
-
+        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
         spinnerOficina.setAdapter(adapter);
         spinnerOficina.setOnItemSelectedListener(this);
 
@@ -77,7 +76,7 @@ public class Oficina extends Activity implements AdapterView.OnItemSelectedListe
             items[i] = list.get(i).getNombreEdificio();
         }
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
 
         spinnerEdificioOficina.setAdapter(adapter);
         spinnerEdificioOficina.setOnItemSelectedListener(this);

@@ -69,6 +69,14 @@
         <activity android:name="patrick.conozcamiuniversida.Sala" />
         <activity android:name="patrick.conozcamiuniversida.ResultadoOficina" />
         <activity android:name="patrick.conozcamiuniversida.ResultadoMapaOficina" />
+        <activity android:name="patrick.conozcamiuniversida.Campus" >
+        </activity>
+        <activity android:name="patrick.conozcamiuniversida.ResultadoCampusSearch" >
+        </activity>
+        <activity android:name="patrick.conozcamiuniversida.ResultadoSala" >
+        </activity>
+        <activity android:name="patrick.conozcamiuniversida.ResultadoMapaSala" >
+        </activity>
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

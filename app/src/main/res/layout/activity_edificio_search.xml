@@ -40,6 +40,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Seleccione Edificio"
                 android:id="@+id/textView4"
+                android:textColor="#FFFFFF"
                 android:layout_marginBottom="20dp"
                 android:textSize="30dp" />
 

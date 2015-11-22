@@ -70,6 +70,19 @@ public class SitioDAO {
 
     }
 
+    public Cursor getDatos3(String nombreEdificio, String NombreSitio) {
+        String idedificio = "";
+
+
+        String sql1 = "select edificio.nombreEdificio, edificio.direccion, edificio.latitud, edificio.longitud, edificio.estado from sitio " +
+                "inner join edificio on edificio.idedificio = sitio.idEdificio" +
+                " where sitio.NombreSitio='" + NombreSitio + "' and edificio.nombreEdificio='" + nombreEdificio + "'";
+
+        Cursor cc = database.rawQuery(sql1, null);
+        return cc;
+
+    }
+
     public List<SitioMOD> getSitioList(String campus) {
         List<SitioMOD> lista = new ArrayList<SitioMOD>();
         SitioMOD _edificioMOD;

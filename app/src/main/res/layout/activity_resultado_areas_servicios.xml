@@ -124,8 +124,8 @@
                         android:layout_below="@+id/map"
                         android:layout_gravity="center_horizontal"
                         android:gravity="center"
-                        android:onClick="btnEstoyAqui"
-                        android:text="Ya estoy aqui" />
+                        android:background="@drawable/aquiestoy"
+                        android:onClick="btnEstoyAqui" />
                 </LinearLayout>
 
                 <LinearLayout

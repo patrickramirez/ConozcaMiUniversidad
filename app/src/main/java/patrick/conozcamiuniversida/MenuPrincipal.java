@@ -47,6 +47,11 @@ public class MenuPrincipal extends Activity {
         finish();
     }
 
+    public void BtnCampus(View v) {
+        startActivity(new Intent(this, Campus.class));
+        finish();
+    }
+
     public void onBackPressed() {
 
     }

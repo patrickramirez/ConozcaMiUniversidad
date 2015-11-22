@@ -84,8 +84,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
             items[i] = list.get(i).getNombreUniversidad();
         }
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
-                items);
+        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
         spinneruniversidad.setAdapter(adapter);
         spinneruniversidad.setOnItemSelectedListener(this);
 
@@ -102,8 +101,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
             items[i] = list.get(i).getNombreSede();
         }
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
-                items);
+        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
 
         spinnersede.setAdapter(adapter);
         spinnersede.setOnItemSelectedListener(this);
@@ -119,8 +117,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
             items[i] = list.get(i).getNombreCampus();
         }
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
-                items);
+        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
 
         spinnercampus.setAdapter(adapter);
         spinnercampus.setOnItemSelectedListener(this);

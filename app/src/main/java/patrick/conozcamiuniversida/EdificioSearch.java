@@ -59,8 +59,7 @@ public class EdificioSearch extends Activity implements AdapterView.OnItemSelect
             items[i] = list.get(i).getNombreEdificio();
         }
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
-                items);
+        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
         spinnerEdificio.setAdapter(adapter);
         spinnerEdificio.setOnItemSelectedListener(this);
 

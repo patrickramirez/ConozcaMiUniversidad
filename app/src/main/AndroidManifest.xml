@@ -50,9 +50,13 @@
         <activity android:name=".ResultadoAreasServicios" />
         <activity android:name=".ResultadoMapaArea" />
         <activity android:name=".Oficina" />
-        <activity android:name=".Sala"></activity>
-        <activity android:name=".ResultadoOficina"></activity>
-        <activity android:name=".ResultadoMapaOficina"></activity>
+        <activity android:name=".Sala" />
+        <activity android:name=".ResultadoOficina" />
+        <activity android:name=".ResultadoMapaOficina" />
+        <activity android:name=".Campus"></activity>
+        <activity android:name=".ResultadoCampusSearch"></activity>
+        <activity android:name=".ResultadoSala"></activity>
+        <activity android:name=".ResultadoMapaSala"></activity>
     </application>
 
 </manifest>

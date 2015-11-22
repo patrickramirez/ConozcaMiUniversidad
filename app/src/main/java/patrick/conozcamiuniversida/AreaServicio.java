@@ -62,7 +62,7 @@ public class AreaServicio extends Activity implements AdapterView.OnItemSelected
             items[i] = tipo;
         }
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
 
         spinnerAreaServicios.setAdapter(adapter);
         spinnerAreaServicios.setOnItemSelectedListener(this);
@@ -79,7 +79,7 @@ public class AreaServicio extends Activity implements AdapterView.OnItemSelected
             items[i] = list.get(i).getNombreEdificio();
         }
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
 
         spinnerEdificiosAreas1.setAdapter(adapter);
         spinnerEdificiosAreas1.setOnItemSelectedListener(this);

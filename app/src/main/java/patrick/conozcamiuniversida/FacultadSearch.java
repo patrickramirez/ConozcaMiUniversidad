@@ -54,8 +54,7 @@ public class FacultadSearch extends Activity implements AdapterView.OnItemSelect
             items[i] = list.get(i).getNombreFacultad();
         }
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
-                items);
+        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
         spinnerFacultad.setAdapter(adapter);
         spinnerFacultad.setOnItemSelectedListener(this);
 

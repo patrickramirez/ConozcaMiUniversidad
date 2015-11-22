@@ -74,4 +74,46 @@ public class CampusDAO {
 
 
     }
+
+
+    public List<CampusMOD> getListCampusbynombrebySedePref(String nombresede) {
+        List<CampusMOD> lista = new ArrayList<CampusMOD>();
+        CampusMOD _campusMOD;
+        String idusede = "";
+
+
+        String sql1 = "select idSede from sede where nombreSede='" + nombresede + "'";
+        Cursor cc = database.rawQuery(sql1, null);
+        if (cc.moveToFirst()) {
+            idusede = cc.getString(0);
+        }
+        String sql = "select * from campus where idsede='" + idusede + "'";
+        Cursor c = database.rawQuery(sql, null);
+
+        if (c != null && c.moveToFirst()) {
+            do {
+                _campusMOD = new CampusMOD();
+                //_uniMOD.setId(c.getInt(c.getColumnIndex("id")));
+                _campusMOD.setNombreCampus(c.getString(c.getColumnIndex("nombrecampus")));
+
+
+                lista.add(_campusMOD);
+            } while (c.moveToNext());
+        }
+
+
+        return lista;
+
+
+    }
+
+
+    public Cursor CursorGetDatosCampus(String campus) {
+        Boolean resp;
+        String sql = "select nombrecampus,direccion,latitud,longitud,estado from campus where nombrecampus = '" + campus + "'";
+        Cursor c = database.rawQuery(sql, null);
+
+        return c;
+
+    }
 }

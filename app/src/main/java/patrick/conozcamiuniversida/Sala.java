@@ -57,7 +57,7 @@ public class Sala extends Activity implements AdapterView.OnItemSelectedListener
 
         }
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
 
         spinnerEdificioSala.setAdapter(adapter);
         spinnerEdificioSala.setOnItemSelectedListener(this);
@@ -74,7 +74,7 @@ public class Sala extends Activity implements AdapterView.OnItemSelectedListener
             items[i] = list.get(i).getTipoSitio();
         }
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
 
         spinnerSalaLaboratorio.setAdapter(adapter);
         spinnerSalaLaboratorio.setOnItemSelectedListener(this);
@@ -98,10 +98,10 @@ public class Sala extends Activity implements AdapterView.OnItemSelectedListener
                 break;
 
             case R.id.spinnerSalaLaboratorio:
-//                String nombre1 = parent.getItemAtPosition(position).toString();
-//                editor = prefs.edit();
-//                editor.putString("NombreEdificioOficinaSelect", nombre1);
-//                editor.commit();
+                String nombre1 = parent.getItemAtPosition(position).toString();
+                editor = prefs.edit();
+                editor.putString("NombreSalaLaboratorioSelect", nombre1);
+                editor.commit();
 
 
                 break;
@@ -116,7 +116,8 @@ public class Sala extends Activity implements AdapterView.OnItemSelectedListener
 
 
     public void btnBuscar(View v) {
-
+        startActivity(new Intent(this, ResultadoSala.class));
+        finish();
     }
 
     public void onBackPressed() {
