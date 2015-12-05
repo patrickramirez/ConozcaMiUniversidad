@@ -168,7 +168,7 @@ public class MysqlDAO {
         String resp= null;
         String path;
 
-            String sql = "select nombreFacultad,estado,idedificio from FACULTAD where nombreFacultad = '" + FACULTAD + "'";
+            String sql = "select * from FACULTAD where nombreFacultad = '" + FACULTAD + "'";
 
         try {
             if (android.os.Build.VERSION.SDK_INT > 9) {
@@ -205,7 +205,7 @@ public class MysqlDAO {
     public String getDatos2(String nombreEdificio, String NombreSitio) {
         String resp= null;
         String path;
-        String sql = "select EDIFICIO.nombreEdificio from EDIFICIO inner join SITIO on SITIO.idEdificio = EDIFICIO.idEdificio" +
+        String sql = "select EDIFICIO.estado from EDIFICIO inner join SITIO on SITIO.idEdificio = EDIFICIO.idEdificio" +
                 " where EDIFICIO.nombreEdificio='" + nombreEdificio + "' and SITIO.NombreSitio='"+NombreSitio+"'";
 
 

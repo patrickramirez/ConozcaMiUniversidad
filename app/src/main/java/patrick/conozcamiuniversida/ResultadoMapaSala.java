@@ -70,7 +70,7 @@ public class ResultadoMapaSala extends Activity {
                     .error(R.drawable.ic_launcher).into(imageView4);
 
             txtNombreEdificioplano.setText(cursor.getString(cursor.getColumnIndex("NombreSitio")));
-            txtestadoplano.setText(cursor.getString(cursor.getColumnIndex("estado")));
+//            txtestadoplano.setText(cursor.getString(cursor.getColumnIndex("estado")));
             txtdetalleplano.setText(cursor.getString(cursor.getColumnIndex("detalleSitio")));
 
         }

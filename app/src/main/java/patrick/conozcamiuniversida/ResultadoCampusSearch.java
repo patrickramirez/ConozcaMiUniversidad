@@ -70,7 +70,7 @@ public class ResultadoCampusSearch extends FragmentActivity {
                     longitud = cursor.getString(cursor.getColumnIndex("longitud"));
                     latitud = cursor.getString(cursor.getColumnIndex("latitud"));
                     txtDescripcionMapa.setText("Campus " + cursor.getString(cursor.getColumnIndex("nombrecampus")));
-                    txtestadoEdificio.setText(cursor.getString(cursor.getColumnIndex("estado")));
+//                    txtestadoEdificio.setText(cursor.getString(cursor.getColumnIndex("estado")));
                     txtdireccionEdificio.setText(direccion);
 
                     options.title("Resultado: ");
