@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import DAO.EdificioDAO;
+import DAO.MysqlDAO;
 import DAO.SitioDAO;
 
 public class ResultadoMapaOficina extends Activity {
@@ -25,7 +26,7 @@ public class ResultadoMapaOficina extends Activity {
     EdificioDAO _edificioDAO;
     SharedPreferences prefs;
     TextView txtdetalleplano, txtNombreEdificioplano, txtestadoplano;
-
+    MysqlDAO _mysqlDAO;
 
     Matrix matrix = new Matrix();
     Matrix savedMatrix = new Matrix();
@@ -49,6 +50,7 @@ public class ResultadoMapaOficina extends Activity {
 
         _sitioDAO = SitioDAO.getInstance(this);
         _edificioDAO = EdificioDAO.getInstance(this);
+        _mysqlDAO = MysqlDAO.getInstance(this);
 
         prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
 
@@ -56,6 +58,7 @@ public class ResultadoMapaOficina extends Activity {
         String tipoSeleccionado = prefs.getString("NombreOficinaSelect", "");
 
         Cursor cursor = _sitioDAO.getDatos2(EdificioArea, tipoSeleccionado);
+        txtestadoplano.setText(_mysqlDAO.getDatos2(EdificioArea, tipoSeleccionado));
         String ruta;
         if (cursor.moveToFirst()) {
 
@@ -67,7 +70,7 @@ public class ResultadoMapaOficina extends Activity {
                     .error(R.drawable.ic_launcher).into(imageView4);
 
             txtNombreEdificioplano.setText(cursor.getString(cursor.getColumnIndex("NombreSitio")));
-            txtestadoplano.setText(cursor.getString(cursor.getColumnIndex("estado")));
+
             txtdetalleplano.setText(cursor.getString(cursor.getColumnIndex("detalleSitio")));
 
         }

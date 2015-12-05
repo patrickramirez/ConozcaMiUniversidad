@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import DAO.EdificioDAO;
+import DAO.MysqlDAO;
 import DAO.SitioDAO;
 
 public class ResultadoMapaSala extends Activity {
@@ -36,6 +37,8 @@ public class ResultadoMapaSala extends Activity {
     static final int ZOOM = 2;
     int mode = NONE;
 
+    MysqlDAO _mysqlDAO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,12 +51,14 @@ public class ResultadoMapaSala extends Activity {
 
         _sitioDAO = SitioDAO.getInstance(this);
         _edificioDAO = EdificioDAO.getInstance(this);
+        _mysqlDAO = MysqlDAO.getInstance(this);
         prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
 
         String EdificioArea = prefs.getString("NombreSalaLaboratorioSelect", "");
         String tipoSeleccionado = prefs.getString("NombreOficinaSalaSelect", "");
 
         Cursor cursor = _sitioDAO.getDatos2(tipoSeleccionado, EdificioArea);
+        txtestadoplano.setText(_mysqlDAO.getDatos2(tipoSeleccionado, EdificioArea));
         String ruta;
         if (cursor.moveToFirst()) {
 

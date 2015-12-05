@@ -25,6 +25,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import DAO.CampusDAO;
 import DAO.EdificioDAO;
+import DAO.MysqlDAO;
 
 public class ResultadoCampusSearch extends FragmentActivity {
 
@@ -33,6 +34,7 @@ public class ResultadoCampusSearch extends FragmentActivity {
     SharedPreferences prefs;
     String longitud, latitud;
     TextView txtDescripcionMapa, txtestadoEdificio, txtdireccionEdificio;
+    MysqlDAO _mysqlDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class ResultadoCampusSearch extends FragmentActivity {
         txtdireccionEdificio = (TextView) findViewById(R.id.txtdireccionEdificio);
 
         _edificioDAO = CampusDAO.getInstance(this);
+        _mysqlDAO = MysqlDAO.getInstance(this);
         prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         FragmentManager fmanager = getSupportFragmentManager();
         Fragment fragment = fmanager.findFragmentById(R.id.map);
@@ -58,7 +61,7 @@ public class ResultadoCampusSearch extends FragmentActivity {
             if (null != gm) {
                 gm.setMyLocationEnabled(true);
 
-
+                txtestadoEdificio.setText(_mysqlDAO.GetEstadoCampusMysql(NombreEdificioSeleccionado));
                 Cursor cursor = _edificioDAO.CursorGetDatosCampus(NombreEdificioSeleccionado);
 
                 if (cursor.moveToFirst()) {

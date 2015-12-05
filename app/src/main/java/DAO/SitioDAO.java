@@ -4,12 +4,17 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.ResultSet;
+import com.mysql.jdbc.Statement;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import MOD.EdificioMOD;
 import MOD.SedeMOD;
 import MOD.SitioMOD;
+import Utils.ConnectMySQL;
 import Utils.DB_helper;
 
 /**
@@ -19,6 +24,10 @@ public class SitioDAO {
 
     private SQLiteDatabase database;
     private static SitioDAO instance;
+    ConnectMySQL mysql;
+    private Connection connect = null;
+    private Statement statement = null;
+    private ResultSet resultSet = null;
 
     public static SitioDAO getInstance(Context context) {
         if (instance == null) {
@@ -30,6 +39,7 @@ public class SitioDAO {
     private SitioDAO(Context context) {
         DB_helper _DataHelper = DB_helper.getInstance(context);
         database = _DataHelper.getWritableDatabase();
+        mysql = new ConnectMySQL();
     }
 
     public void Insertar(int id, String tipo, String nombreSitio, String detalle, String planositio,
@@ -237,4 +247,7 @@ public class SitioDAO {
 
 
     }
+
+
+
 }

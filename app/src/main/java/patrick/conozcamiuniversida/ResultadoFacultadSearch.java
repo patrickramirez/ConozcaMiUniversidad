@@ -24,6 +24,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import DAO.EdificioDAO;
 import DAO.FacultadDAO;
+import DAO.MysqlDAO;
 
 public class ResultadoFacultadSearch extends FragmentActivity {
 
@@ -33,7 +34,7 @@ public class ResultadoFacultadSearch extends FragmentActivity {
     SharedPreferences prefs;
     String longitud, latitud;
     TextView txtDescripcionMapaFacultad, txtestadoFacultad, txtdireccionFacultad;
-
+    MysqlDAO _mysqlDAO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +45,7 @@ public class ResultadoFacultadSearch extends FragmentActivity {
         txtdireccionFacultad = (TextView) findViewById(R.id.txtdireccionFacultad);
         _edificioDAO = EdificioDAO.getInstance(this);
         _facultadDAO = FacultadDAO.getInstance(this);
+        _mysqlDAO = MysqlDAO.getInstance(this);
         prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         FragmentManager fmanager = getSupportFragmentManager();
         Fragment fragment = fmanager.findFragmentById(R.id.map);
@@ -60,6 +62,7 @@ public class ResultadoFacultadSearch extends FragmentActivity {
 
 
                 Cursor cursor = _facultadDAO.CursorGetDatosFacultad(NombreEdificioSeleccionado);
+                txtestadoFacultad.setText(_mysqlDAO.getEstadoFACULTADMysql(NombreEdificioSeleccionado));
 
                 if (cursor.moveToFirst()) {
 
@@ -75,7 +78,7 @@ public class ResultadoFacultadSearch extends FragmentActivity {
                     }
 
                     txtDescripcionMapaFacultad.setText("Facultad " + cursor.getString(cursor.getColumnIndex("nombreFacultad")));
-                    txtestadoFacultad.setText(cursor.getString(cursor.getColumnIndex("estado")));
+
 
 
                     options.title("Resultado: ");

@@ -25,6 +25,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import DAO.EdificioDAO;
+import DAO.MysqlDAO;
 import DAO.SitioDAO;
 
 public class ResultadoAreasServicios extends FragmentActivity {
@@ -35,6 +36,7 @@ public class ResultadoAreasServicios extends FragmentActivity {
     SharedPreferences prefs;
     String longitud, latitud;
     TextView txtDescripcionMapaArea, txtestadoArea, txtdireccionArea;
+    MysqlDAO _mysqlDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class ResultadoAreasServicios extends FragmentActivity {
 
         _sitioDAO = SitioDAO.getInstance(this);
         _edificioDAO = EdificioDAO.getInstance(this);
+        _mysqlDAO = MysqlDAO.getInstance(this);
         prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         FragmentManager fmanager = getSupportFragmentManager();
         Fragment fragment = fmanager.findFragmentById(R.id.map);
@@ -64,7 +67,7 @@ public class ResultadoAreasServicios extends FragmentActivity {
             if (null != gm) {
                 gm.setMyLocationEnabled(true);
 
-
+                txtestadoArea.setText(_mysqlDAO.getEstadoEdificioMysql(EdificioArea));
                 Cursor cursor = _edificioDAO.CursorGetDatosEdificio(EdificioArea);
 
                 if (cursor.moveToFirst()) {
@@ -73,7 +76,10 @@ public class ResultadoAreasServicios extends FragmentActivity {
                     longitud = cursor.getString(cursor.getColumnIndex("longitud"));
                     latitud = cursor.getString(cursor.getColumnIndex("latitud"));
                     txtDescripcionMapaArea.setText("Edificio " + cursor.getString(cursor.getColumnIndex("nombreEdificio")));
-                    txtestadoArea.setText(cursor.getString(cursor.getColumnIndex("estado")));
+
+
+
+
                     txtdireccionArea.setText("Dirigirse a: " + direccion);
 
                     options.title("Resultado: ");

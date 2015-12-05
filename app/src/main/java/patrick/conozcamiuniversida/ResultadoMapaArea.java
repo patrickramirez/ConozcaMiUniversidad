@@ -23,6 +23,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import DAO.EdificioDAO;
+import DAO.MysqlDAO;
 import DAO.SitioDAO;
 
 public class ResultadoMapaArea extends Activity {
@@ -43,6 +44,7 @@ public class ResultadoMapaArea extends Activity {
     static final int DRAG = 1;
     static final int ZOOM = 2;
     int mode = NONE;
+    MysqlDAO _mysqlDAO;
 
 
     @Override
@@ -57,6 +59,7 @@ public class ResultadoMapaArea extends Activity {
 
         _sitioDAO = SitioDAO.getInstance(this);
         _edificioDAO = EdificioDAO.getInstance(this);
+        _mysqlDAO = MysqlDAO.getInstance(this);
 
         prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
 
@@ -64,6 +67,7 @@ public class ResultadoMapaArea extends Activity {
         String tipoSeleccionado = prefs.getString("NombreTipoSitioSelect", "");
 
         Cursor cursor = _sitioDAO.getDatos(EdificioArea, tipoSeleccionado);
+        txtestadoplano.setText(_mysqlDAO.getEstadoResultadoMapaMysql(EdificioArea,tipoSeleccionado));
         String ruta;
         if (cursor.moveToFirst()) {
 
@@ -75,7 +79,7 @@ public class ResultadoMapaArea extends Activity {
                     .error(R.drawable.ic_launcher).into(imageView4);
 
             txtNombreEdificioplano.setText(cursor.getString(cursor.getColumnIndex("NombreSitio")));
-            txtestadoplano.setText(cursor.getString(cursor.getColumnIndex("estado")));
+
             txtdetalleplano.setText(cursor.getString(cursor.getColumnIndex("detalleSitio")));
 
         }
