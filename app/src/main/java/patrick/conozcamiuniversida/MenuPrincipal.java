@@ -27,6 +27,11 @@ public class MenuPrincipal extends Activity {
         finish();
     }
 
+    public void btnExplorar(View v){
+        startActivity(new Intent(this, Explorar.class));
+        finish();
+    }
+
     public void BtnCambiarRegistro(View v) {
         startActivity(new Intent(this, MainActivity.class));
         finish();

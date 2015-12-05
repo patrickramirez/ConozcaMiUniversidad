@@ -159,4 +159,25 @@ public class EdificioDAO {
 
 
     }
+
+
+    public Cursor getEdificioaExplorarbyUniversidad(String NombreUniversidad) {
+
+
+        String sql1 = "select edificio.latitud, edificio.longitud, edificio.nombreEdificio from universidad " +
+                "inner join sede on sede.iduniversidad = universidad.id " +
+                "inner join campus on campus.idsede = sede.idSede " +
+                "inner join edificio on edificio.idEdificio = campus.idcampus " +
+                "where universidad.nombre='" + NombreUniversidad + "'";
+
+        Cursor cursor= database.rawQuery(sql1, null);
+
+        if(cursor.moveToFirst()){
+            String x = cursor.getString(0);
+        }
+        return cursor;
+
+
+    }
+
 }

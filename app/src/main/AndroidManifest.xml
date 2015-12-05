@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="patrick.conozcamiuniversida" >
+    package="patrick.conozcamiuniversida">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    >
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+
 
     <application
+        android:name=".ConoscaApp"
         android:allowBackup="true"
         android:icon="@drawable/logocmu"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" />
@@ -23,7 +27,11 @@
         <!-- <meta-data -->
         <!-- android:name="com.google.android.maps.v2.API_KEY" -->
         <!-- android:value="" /> -->
-
+        <service
+            android:name=".GpsService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
         <activity
             android:name=".SplashScreen"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
@@ -53,10 +61,11 @@
         <activity android:name=".Sala" />
         <activity android:name=".ResultadoOficina" />
         <activity android:name=".ResultadoMapaOficina" />
-        <activity android:name=".Campus"></activity>
-        <activity android:name=".ResultadoCampusSearch"></activity>
-        <activity android:name=".ResultadoSala"></activity>
-        <activity android:name=".ResultadoMapaSala"></activity>
+        <activity android:name=".Campus" />
+        <activity android:name=".ResultadoCampusSearch" />
+        <activity android:name=".ResultadoSala" />
+        <activity android:name=".ResultadoMapaSala" />
+        <activity android:name=".Explorar"></activity>
     </application>
 
 </manifest>
