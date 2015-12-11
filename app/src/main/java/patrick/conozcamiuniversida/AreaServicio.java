@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.List;
@@ -44,7 +45,13 @@ public class AreaServicio extends Activity implements AdapterView.OnItemSelected
         spinnerAreaServicios = (Spinner) findViewById(R.id.spinnerAreaServicios);
 
         prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-        LoadSpinnerAreas();
+        try {
+            LoadSpinnerAreas();
+        } catch (Exception e) {
+            e.printStackTrace();
+//            Toast.makeText(this, "", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     public void btnBuscar(View v) {
@@ -56,16 +63,20 @@ public class AreaServicio extends Activity implements AdapterView.OnItemSelected
         String Nombre = prefs.getString("campus", "");
         List<SitioMOD> lista = _sitioDAO.getSitioList(Nombre);
 
-        items = new String[lista.size()];
-        for (int i = 0; i < lista.size(); i++) {
-            String tipo = lista.get(i).getTipoSitio();
-            items[i] = tipo;
+        if(lista.size() >0 ) {
+            items = new String[lista.size()];
+            for (int i = 0; i < lista.size(); i++) {
+                String tipo = lista.get(i).getTipoSitio();
+                items[i] = tipo;
+            }
+
+            adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
+
+            spinnerAreaServicios.setAdapter(adapter);
+            spinnerAreaServicios.setOnItemSelectedListener(this);
+        }else{
+            Toast.makeText(this, "No existen datos asociados al item", Toast.LENGTH_LONG).show();
         }
-
-        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
-
-        spinnerAreaServicios.setAdapter(adapter);
-        spinnerAreaServicios.setOnItemSelectedListener(this);
 
     }
 
@@ -73,16 +84,21 @@ public class AreaServicio extends Activity implements AdapterView.OnItemSelected
         String Nombre = prefs.getString("NombreTipoSitioSelect", "");
 
         List<EdificioMOD> list = _edificioDAO.getEdificioListbyTipoSitio(Nombre);
-        items = new String[list.size()];
-        for (int i = 0; i < list.size(); i++) {
 
-            items[i] = list.get(i).getNombreEdificio();
+        if(list.size() >0) {
+            items = new String[list.size()];
+            for (int i = 0; i < list.size(); i++) {
+
+                items[i] = list.get(i).getNombreEdificio();
+            }
+
+            adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
+
+            spinnerEdificiosAreas1.setAdapter(adapter);
+            spinnerEdificiosAreas1.setOnItemSelectedListener(this);
+        }else{
+            Toast.makeText(this, "No existen datos asociados al item", Toast.LENGTH_LONG).show();
         }
-
-        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
-
-        spinnerEdificiosAreas1.setAdapter(adapter);
-        spinnerEdificiosAreas1.setOnItemSelectedListener(this);
 
     }
 

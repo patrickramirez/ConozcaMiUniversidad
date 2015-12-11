@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -51,16 +52,20 @@ public class Sala extends Activity implements AdapterView.OnItemSelectedListener
         String Nombre = prefs.getString("campus", "");
 
         List<EdificioMOD> lista = _edificioDAO.getEdificioListbyNombreCampus(Nombre);
-        items = new String[lista.size()];
-        for (int i = 0; i < lista.size(); i++) {
-            items[i] = lista.get(i).getNombreEdificio();
+        if (lista.size() > 0) {
+            items = new String[lista.size()];
+            for (int i = 0; i < lista.size(); i++) {
+                items[i] = lista.get(i).getNombreEdificio();
 
+            }
+
+            adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
+
+            spinnerEdificioSala.setAdapter(adapter);
+            spinnerEdificioSala.setOnItemSelectedListener(this);
+        } else {
+            Toast.makeText(this, "No existen datos asociados al item", Toast.LENGTH_LONG).show();
         }
-
-        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
-
-        spinnerEdificioSala.setAdapter(adapter);
-        spinnerEdificioSala.setOnItemSelectedListener(this);
 
     }
 
@@ -68,6 +73,7 @@ public class Sala extends Activity implements AdapterView.OnItemSelectedListener
         String Nombre = prefs.getString("NombreOficinaSalaSelect", "");
 
         List<SitioMOD> list = _sitioDAO.getSalasLaboratoriosList(Nombre);
+        if (list.size() > 0) {
         items = new String[list.size()];
         for (int i = 0; i < list.size(); i++) {
 
@@ -78,7 +84,9 @@ public class Sala extends Activity implements AdapterView.OnItemSelectedListener
 
         spinnerSalaLaboratorio.setAdapter(adapter);
         spinnerSalaLaboratorio.setOnItemSelectedListener(this);
-
+        } else {
+            Toast.makeText(this, "No existen datos asociados al item", Toast.LENGTH_LONG).show();
+        }
     }
 
 

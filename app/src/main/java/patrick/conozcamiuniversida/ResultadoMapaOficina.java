@@ -12,12 +12,14 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import DAO.EdificioDAO;
 import DAO.MysqlDAO;
 import DAO.SitioDAO;
+import Utils.Utils;
 
 public class ResultadoMapaOficina extends Activity {
 
@@ -57,23 +59,40 @@ public class ResultadoMapaOficina extends Activity {
         String EdificioArea = prefs.getString("NombreEdificioOficinaSelect", "");
         String tipoSeleccionado = prefs.getString("NombreOficinaSelect", "");
 
-        Cursor cursor = _sitioDAO.getDatos2(EdificioArea, tipoSeleccionado);
-        txtestadoplano.setText(_mysqlDAO.getDatos2(EdificioArea, tipoSeleccionado));
-        String ruta;
-        if (cursor.moveToFirst()) {
 
-            ruta = cursor.getString(cursor.getColumnIndex("planoSitio"));
+        if(Utils.isOnline(this)){
+            try {
+                Cursor cursor = _sitioDAO.getDatos2(EdificioArea, tipoSeleccionado);
+                try {
+                    txtestadoplano.setText(_mysqlDAO.getDatos2(EdificioArea, tipoSeleccionado));
+                }catch (Exception e){
+                    Toast.makeText(this,"Estado no disponible, prueba tu conectividad e intente nuevamente.",Toast.LENGTH_LONG).show();
+                }
 
-            Picasso.with(getApplicationContext())
-                    .load(ruta)
-                    .placeholder(R.drawable.ic_launcher)
-                    .error(R.drawable.ic_launcher).into(imageView4);
+                String ruta;
+                if (cursor.moveToFirst()) {
 
-            txtNombreEdificioplano.setText(cursor.getString(cursor.getColumnIndex("NombreSitio")));
+                    ruta = cursor.getString(cursor.getColumnIndex("planoSitio"));
 
-            txtdetalleplano.setText(cursor.getString(cursor.getColumnIndex("detalleSitio")));
+                    Picasso.with(getApplicationContext())
+                            .load(ruta)
+                            .placeholder(R.drawable.ic_launcher)
+                            .error(R.drawable.ic_launcher).into(imageView4);
 
+                    txtNombreEdificioplano.setText(cursor.getString(cursor.getColumnIndex("NombreSitio")));
+
+                    txtdetalleplano.setText(cursor.getString(cursor.getColumnIndex("detalleSitio")));
+
+                }
+            }catch (Exception e){
+                Toast.makeText(this, "Plano no disponible, prueba tu conectividad e intente nuevamente.", Toast.LENGTH_LONG).show();
+            }
+        }else{
+            Toast.makeText(this,"Problemas de conexion a internet, verifique e intente nuevamente",Toast.LENGTH_LONG).show();
         }
+
+
+
     }
 
 

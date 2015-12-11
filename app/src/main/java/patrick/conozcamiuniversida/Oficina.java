@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -54,15 +55,21 @@ public class Oficina extends Activity implements AdapterView.OnItemSelectedListe
     private void LoadSpinnerOfficinas() {
         String Nombre = prefs.getString("campus", "");
         List<SitioMOD> lista = _sitioDAO.getOficinasList(Nombre);
-        items = new String[lista.size()];
-        for (int i = 0; i < lista.size(); i++) {
-            items[i] = lista.get(i).getTipoSitio();
 
+        if(lista.size()>0){
+            items = new String[lista.size()];
+            for (int i = 0; i < lista.size(); i++) {
+                items[i] = lista.get(i).getTipoSitio();
+
+            }
+
+            adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
+            spinnerOficina.setAdapter(adapter);
+            spinnerOficina.setOnItemSelectedListener(this);
+        }else{
+            Toast.makeText(this, "No existen datos asociados al item", Toast.LENGTH_LONG).show();
         }
 
-        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
-        spinnerOficina.setAdapter(adapter);
-        spinnerOficina.setOnItemSelectedListener(this);
 
     }
 
@@ -70,16 +77,22 @@ public class Oficina extends Activity implements AdapterView.OnItemSelectedListe
         String Nombre = prefs.getString("NombreOficinaSelect", "");
 
         List<EdificioMOD> list = _edificioDAO.getEdificioListbyNombreSitio(Nombre);
-        items = new String[list.size()];
-        for (int i = 0; i < list.size(); i++) {
 
-            items[i] = list.get(i).getNombreEdificio();
+        if(list.size()>0){
+            items = new String[list.size()];
+            for (int i = 0; i < list.size(); i++) {
+
+                items[i] = list.get(i).getNombreEdificio();
+            }
+
+            adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
+
+            spinnerEdificioOficina.setAdapter(adapter);
+            spinnerEdificioOficina.setOnItemSelectedListener(this);
+        }else{
+            Toast.makeText(this, "No existen datos asociados al item", Toast.LENGTH_LONG).show();
         }
 
-        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
-
-        spinnerEdificioOficina.setAdapter(adapter);
-        spinnerEdificioOficina.setOnItemSelectedListener(this);
 
     }
 

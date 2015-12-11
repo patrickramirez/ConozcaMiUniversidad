@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import DAO.EdificioDAO;
 import DAO.FacultadDAO;
 import DAO.MysqlDAO;
+import Utils.Utils;
 
 public class ResultadoFacultadSearch extends FragmentActivity {
 
@@ -51,57 +53,68 @@ public class ResultadoFacultadSearch extends FragmentActivity {
         Fragment fragment = fmanager.findFragmentById(R.id.map);
         SupportMapFragment supportmapfragment = (SupportMapFragment) fragment;
 
-        MarkerOptions options = new MarkerOptions();
+        if(Utils.isOnline(this)){
+            try{
+                MarkerOptions options = new MarkerOptions();
 
-        gm = supportmapfragment.getMap();
-        String NombreEdificioSeleccionado = prefs.getString("NombreFacultadSeleccionado", "");
+                gm = supportmapfragment.getMap();
+                String NombreEdificioSeleccionado = prefs.getString("NombreFacultadSeleccionado", "");
 
-        if (NombreEdificioSeleccionado != null) {
-            if (null != gm) {
-                gm.setMyLocationEnabled(true);
+                if (NombreEdificioSeleccionado != null) {
+                    if (null != gm) {
+                        gm.setMyLocationEnabled(true);
 
 
-                Cursor cursor = _facultadDAO.CursorGetDatosFacultad(NombreEdificioSeleccionado);
-                txtestadoFacultad.setText(_mysqlDAO.getEstadoFACULTADMysql(NombreEdificioSeleccionado));
+                        Cursor cursor = _facultadDAO.CursorGetDatosFacultad(NombreEdificioSeleccionado);
+                        txtestadoFacultad.setText(_mysqlDAO.getEstadoFACULTADMysql(NombreEdificioSeleccionado));
 
-                if (cursor.moveToFirst()) {
+                        if (cursor.moveToFirst()) {
 
-                    String idEdificio = cursor.getString(cursor.getColumnIndex("idedificio"));
+                            String idEdificio = cursor.getString(cursor.getColumnIndex("idedificio"));
 
-                    Cursor c = _edificioDAO.CursorGetDatosEdificiobyID(idEdificio);
+                            Cursor c = _edificioDAO.CursorGetDatosEdificiobyID(idEdificio);
 
-                    if (c.moveToFirst()) {
-                        String direccion = c.getString(c.getColumnIndex("direccion"));
-                        longitud = c.getString(c.getColumnIndex("longitud"));
-                        latitud = c.getString(c.getColumnIndex("latitud"));
-                        txtdireccionFacultad.setText(direccion);
+                            if (c.moveToFirst()) {
+                                String direccion = c.getString(c.getColumnIndex("direccion"));
+                                longitud = c.getString(c.getColumnIndex("longitud"));
+                                latitud = c.getString(c.getColumnIndex("latitud"));
+                                txtdireccionFacultad.setText(direccion);
+                            }
+
+                            txtDescripcionMapaFacultad.setText("Facultad " + cursor.getString(cursor.getColumnIndex("nombreFacultad")));
+
+
+
+                            options.title("Resultado: ");
+                            //options.snippet(direccion);
+
+
+                            gm.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                            options.position(new LatLng(Double.parseDouble(latitud), Double
+                                    .parseDouble(longitud)));
+                            gm.addMarker(options);
+
+                            LatLng actual = new LatLng(Double.parseDouble(latitud),
+                                    Double.parseDouble(longitud));
+                            CameraPosition posicion = new CameraPosition.Builder().target(actual).zoom(15).build();
+                            CameraUpdate update = CameraUpdateFactory.newCameraPosition(posicion);
+                            gm.animateCamera(update);
+
+
+                        }
+
+
                     }
-
-                    txtDescripcionMapaFacultad.setText("Facultad " + cursor.getString(cursor.getColumnIndex("nombreFacultad")));
-
-
-
-                    options.title("Resultado: ");
-                    //options.snippet(direccion);
-
-
-                    gm.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                    options.position(new LatLng(Double.parseDouble(latitud), Double
-                            .parseDouble(longitud)));
-                    gm.addMarker(options);
-
-                    LatLng actual = new LatLng(Double.parseDouble(latitud),
-                            Double.parseDouble(longitud));
-                    CameraPosition posicion = new CameraPosition.Builder().target(actual).zoom(15).build();
-                    CameraUpdate update = CameraUpdateFactory.newCameraPosition(posicion);
-                    gm.animateCamera(update);
-
-
                 }
-
-
+            }catch (Exception e){
+                Toast.makeText(this, "Mapa no Disponible, intente nuevamente", Toast.LENGTH_LONG).show();
             }
+        }else{
+            Toast.makeText(this,"Problemas de conexion a internet, verifique e intente nuevamente",Toast.LENGTH_LONG).show();
         }
+
+
+
     }
 
     public void onBackPressed() {

@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -58,15 +59,21 @@ public class Campus extends Activity implements AdapterView.OnItemSelectedListen
         String NombreSede = prefs.getString("sede", "");
 
         List<CampusMOD> list = _campusDAO.getListCampusbynombrebySedePref(NombreSede);
-        items = new String[list.size()];
-        for (int i = 0; i < list.size(); i++) {
 
-            items[i] = list.get(i).getNombreCampus();
+        if(list.size()>0){
+            items = new String[list.size()];
+            for (int i = 0; i < list.size(); i++) {
+
+                items[i] = list.get(i).getNombreCampus();
+            }
+            adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
+            //adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,items);
+            spinnerCampusSearch.setAdapter(adapter);
+            spinnerCampusSearch.setOnItemSelectedListener(this);
+        }else{
+            Toast.makeText(this, "No existen datos asociados al item", Toast.LENGTH_LONG).show();
         }
-        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
-        //adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,items);
-        spinnerCampusSearch.setAdapter(adapter);
-        spinnerCampusSearch.setOnItemSelectedListener(this);
+
 
     }
 

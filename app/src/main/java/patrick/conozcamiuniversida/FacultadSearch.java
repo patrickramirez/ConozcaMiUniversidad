@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -48,15 +49,22 @@ public class FacultadSearch extends Activity implements AdapterView.OnItemSelect
         String NombreCampus = prefs.getString("campus", "");
 
         List<FacultadMOD> list = _facultadDAO.getFacultadListbyNombreCampus(NombreCampus);
-        items = new String[list.size()];
-        for (int i = 0; i < list.size(); i++) {
 
-            items[i] = list.get(i).getNombreFacultad();
+
+        if(list.size()>0){
+            items = new String[list.size()];
+            for (int i = 0; i < list.size(); i++) {
+
+                items[i] = list.get(i).getNombreFacultad();
+            }
+
+            adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
+            spinnerFacultad.setAdapter(adapter);
+            spinnerFacultad.setOnItemSelectedListener(this);
+        }else{
+            Toast.makeText(this, "No existen datos asociados al item", Toast.LENGTH_LONG).show();
         }
 
-        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
-        spinnerFacultad.setAdapter(adapter);
-        spinnerFacultad.setOnItemSelectedListener(this);
 
     }
 

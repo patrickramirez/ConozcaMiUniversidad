@@ -78,15 +78,21 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     private void loadSpinnerUniversidad() {
 
         List<UniversidadMOD> list = _uniDAO.getUniversidadList();
-        items = new String[list.size()];
-        for (int i = 0; i < list.size(); i++) {
 
-            items[i] = list.get(i).getNombreUniversidad();
+        if(list.size()>0){
+            items = new String[list.size()];
+            for (int i = 0; i < list.size(); i++) {
+
+                items[i] = list.get(i).getNombreUniversidad();
+            }
+
+            adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
+            spinneruniversidad.setAdapter(adapter);
+            spinneruniversidad.setOnItemSelectedListener(this);
+        }else{
+            Toast.makeText(this, "No existen datos asociados al item", Toast.LENGTH_LONG).show();
         }
 
-        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
-        spinneruniversidad.setAdapter(adapter);
-        spinneruniversidad.setOnItemSelectedListener(this);
 
     }
 
@@ -94,33 +100,46 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     public void cargarspinnerSede(String nombre) {
 
         List<SedeMOD> list = _sedeDAO.getListsedes(nombre);
-        items = new String[list.size()];
 
-        for (int i = 0; i < list.size(); i++) {
 
-            items[i] = list.get(i).getNombreSede();
+        if(list.size()>0){
+            items = new String[list.size()];
+
+            for (int i = 0; i < list.size(); i++) {
+
+                items[i] = list.get(i).getNombreSede();
+            }
+
+            adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
+
+            spinnersede.setAdapter(adapter);
+            spinnersede.setOnItemSelectedListener(this);
+        }else{
+            Toast.makeText(this, "No existen datos asociados al item", Toast.LENGTH_LONG).show();
         }
 
-        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
-
-        spinnersede.setAdapter(adapter);
-        spinnersede.setOnItemSelectedListener(this);
     }
 
     public void cargarspinnerCampus(String nombre, String iduniversidad) {
 
         List<CampusMOD> list = _campusDAO.getListCampusbynombreSede(nombre, iduniversidad);
-        items = new String[list.size()];
 
-        for (int i = 0; i < list.size(); i++) {
+        if(list.size()>0){
+            items = new String[list.size()];
 
-            items[i] = list.get(i).getNombreCampus();
+            for (int i = 0; i < list.size(); i++) {
+
+                items[i] = list.get(i).getNombreCampus();
+            }
+
+            adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
+
+            spinnercampus.setAdapter(adapter);
+            spinnercampus.setOnItemSelectedListener(this);
+        }else{
+            Toast.makeText(this, "No existen datos asociados al item", Toast.LENGTH_LONG).show();
         }
 
-        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, items);
-
-        spinnercampus.setAdapter(adapter);
-        spinnercampus.setOnItemSelectedListener(this);
     }
 
     @Override
